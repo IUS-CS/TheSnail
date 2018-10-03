@@ -5,7 +5,6 @@
  */
 package protogui;
 
-import java.awt.event.ActionEvent;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,9 +14,9 @@ import static org.junit.Assert.*;
  *
  * @author Thomas
  */
-public class LayoutTest {
+public class MathFunctionsTest {
     
-    public LayoutTest() {
+    public MathFunctionsTest() {
     }
     
     @BeforeClass
@@ -28,16 +27,16 @@ public class LayoutTest {
     public static void tearDownClass() {
     }
 
-
-
     /**
-     * Test of setAdditionProblems method, of class Layout.
+     * Test of setAdditionProblems method, of class MathFunctions.
      */
     @Test
     public void testSetAdditionProblems() {
         System.out.println("setAdditionProblems");
         int x = 0;
-        Layout instance = new Layout();
+        MathFunctions instance = new MathFunctions();
+        instance.setAdditionProblems(x);
+        // TODO review the generated test code and remove the default call to fail.
         instance.setAdditionProblems(5);
         int expResult =5;
         int result = instance.getAdditionProblems();
@@ -45,9 +44,5 @@ public class LayoutTest {
         assertEquals(expResult,result);
     }
 
-    /**
-     * Test of getAdditionProblems method, of class Layout.
-     */
-    
     
 }
