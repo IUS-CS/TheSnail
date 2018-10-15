@@ -27,6 +27,7 @@ public class Layout extends JFrame implements ActionListener{
     JTextField input,output;
     JButton print;
     MathFunctions mathFunctions = new MathFunctions();
+    WriteFile writeFile = new WriteFile();
     
     
     public Layout()
@@ -57,7 +58,7 @@ public class Layout extends JFrame implements ActionListener{
                 try
                 {                           
                     mathFunctions.setAdditionProblems(Integer.parseInt(input.getText()));
-                    writeFile();
+                    writeFile.writeFile(mathFunctions.getAdditionProblems());
                 }
                 catch(Exception IOException)
                 {
@@ -69,35 +70,7 @@ public class Layout extends JFrame implements ActionListener{
     
     
     
-    public void writeFile() throws IOException//writes the file to text: research pdf 
-    {        
-         BufferedWriter file = new BufferedWriter(new FileWriter("output.txt"));
-         int range = (mathFunctions.getAdditionProblems() / 3);
-         //Range cuts the desired number of problems in third
-         //This creates an equal number of addition, subtraction, and multiplication problems
-            for (int i = 0; i < range; i++) //generates a number of problems based on what the user specified
-            {
-                file.write(mathFunctions.generateAddition());
-                file.newLine();
-                             
-            }
-            
-            for (int i = 0; i < range; i++) //generates a number of problems based on what the user specified
-            {
-                file.write(mathFunctions.generateSubtraction());
-                file.newLine();
-                             
-            }
-            
-            for (int i = 0; i < range; i++) //generates a number of problems based on what the user specified
-            {
-                file.write(mathFunctions.generateMultiplication());
-                file.newLine();
-                             
-            }
-            
-            file.close();  
-    }
+    
     
     
     

@@ -25,14 +25,14 @@ public class MathFunctions {
         return additionProblems;
     }
     
-    public String generateAddition()//generates addition problems
+    public String generateAddition(int problemNumber)//generates addition problems
     {
         Random rand = new Random();
         int num1 = rand.nextInt(10) + 1;
         int num2 = rand.nextInt(10) + 1;
         int sum = num1 + num2;
                 
-        String problem = (num1 + " + " + num2 + " = " + sum);
+        String problem = (problemNumber + ") " + num1 + " + " + num2 + " = " + sum + "<br>" + "\n");
         return problem;
     }
     
