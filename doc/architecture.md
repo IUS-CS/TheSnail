@@ -18,6 +18,6 @@ This document is designed to give a general overview of our project, specificall
 
 **Representation:**  
 *Front-End View: The user will see a GUI where they are able to enter the number and type of problems they want to be generated.  
-*Back-End View: The program generates the desired set of problems using random numbers, outputs the equation in a pdf along with the answers.
+*Back-End View: The program generates the desired set of problems using random numbers, outputs the equation in a html along with the answers.
 
 ![image of front-end and architecure](../images/Drawing.PNG)
