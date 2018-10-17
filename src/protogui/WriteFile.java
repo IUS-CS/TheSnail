@@ -15,39 +15,62 @@ import java.io.IOException;
  */
 public class WriteFile {
 
-    public void writeFile(int additionProblems) throws IOException//writes the file to text: research pdf 
-    {    
-        MathFunctions mathFunctions = new MathFunctions();
-        BufferedWriter file = new BufferedWriter(new FileWriter("output.html"));
+    int totalProblems = 0;
+    BufferedWriter file;
+
+    public void startFile() throws IOException {
+        file = new BufferedWriter(new FileWriter("output.html"));
         file.write("<html>\n");
         file.write("<header><title>MathProblemGenerator</title></header>\n");
         file.write("<body>\n");
         file.write("Name_____________<br>\n");
-        int range = (additionProblems);
-         //Range cuts the desired number of problems in third
-         //This creates an equal number of addition, subtraction, and multiplication problems
-            for (int i = 0; i < range; i++) //generates a number of problems based on what the user specified
+
+    }
+
+    public void writeFile(int problems, String type) throws IOException//writes the file to html
+    {
+        MathFunctions mathFunctions = new MathFunctions();
+
+        if (type.equals("addition")) {
+            for (int i = 0; i < problems; i++) //generates a number of problems based on what the user specified
             {
-                file.write(mathFunctions.generateAddition(i+1));//passing i through to generate problem number; +1 to start at problem 1
-                file.newLine();                             
-            }
-            /*
-            for (int i = 0; i < range; i++) //generates a number of problems based on what the user specified
-            {
-                file.write(mathFunctions.generateSubtraction());
+                file.write(mathFunctions.generateAddition(totalProblems + 1));//passing i through to generate problem number; +1 to start at problem 1
+                totalProblems++;
                 file.newLine();
-                             
             }
-            
-            for (int i = 0; i < range; i++) //generates a number of problems based on what the user specified
+        }//if
+        else if (type.equals("subtraction")) {
+            for (int i = 0; i < problems; i++) //generates a number of problems based on what the user specified
             {
-                file.write(mathFunctions.generateMultiplication());
+                file.write(mathFunctions.generateSubtraction(totalProblems + 1));
+                totalProblems++;
                 file.newLine();
-                             
+
             }
-            */
-            file.write("<body>\n");
-            file.write("<html>\n");
-            file.close();  
+        }//else if
+        else if (type.equals("multiplication")) {
+            for (int i = 0; i < problems; i++) //generates a number of problems based on what the user specified
+            {
+                file.write(mathFunctions.generateMultiplication(totalProblems + 1));
+                totalProblems++;
+                file.newLine();
+
+            }
+        }//else if
+        else if (type.equals("division")) {
+            for (int i = 0; i < problems; i++) //generates a number of problems based on what the user specified
+            {
+                file.write(mathFunctions.generateDivision(totalProblems + 1));
+                totalProblems++;
+                file.newLine();
+
+            }
+        }//else if
+    }
+
+    public void endFile() throws IOException {
+        file.write("<body>\n");
+        file.write("<html>\n");
+        file.close();
     }
 }
