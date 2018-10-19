@@ -15,9 +15,10 @@ import java.io.IOException;
  */
 public class WriteFile {
 
-    int totalProblems = 0;
+    
     BufferedWriter file;
-
+    public int totalProblems = 0;
+    
     public void startFile() throws IOException {
         file = new BufferedWriter(new FileWriter("output.html"));
         file.write("<html>\n");
@@ -30,6 +31,7 @@ public class WriteFile {
     public void writeFile(int problems, String type) throws IOException//writes the file to html
     {
         MathFunctions mathFunctions = new MathFunctions();
+        
 
         if (type.equals("addition")) {
             for (int i = 0; i < problems; i++) //generates a number of problems based on what the user specified

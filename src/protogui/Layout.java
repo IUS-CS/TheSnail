@@ -92,6 +92,7 @@ public class Layout extends JFrame implements ActionListener {
                 writeFile.writeFile(mathFunctions.getDivisionProblems(), "division");
                 
                 writeFile.endFile();
+                writeFile.totalProblems = 0; // resets problems counter incase of multiples generations
             } catch (Exception IOException) {
 
             }
