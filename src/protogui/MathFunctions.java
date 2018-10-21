@@ -61,7 +61,7 @@ public class MathFunctions {
     {
         return divisionProblems;
     }
-    
+        
     public String generateAddition(int problemNumber)//generates addition problems
     {
         Random rand = new Random();
