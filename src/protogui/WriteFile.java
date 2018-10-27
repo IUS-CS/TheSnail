@@ -1,6 +1,6 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template questions, choose Tools | Templates
  * and open the template in the editor.
  */
 package protogui;
@@ -16,46 +16,53 @@ import java.io.IOException;
 public class WriteFile {
 
     
-    BufferedWriter file;
+    BufferedWriter questions;
+    BufferedWriter solutions;
     public int totalProblems = 0;
     
     public void startFile() throws IOException {
-        file = new BufferedWriter(new FileWriter("output.html"));
-        file.write("<html>\n");
-        file.write("<header><title>MathProblemGenerator</title></header>\n");
-        file.write("<body>\n");
-        file.write("Name_____________<br>\n");
+        questions = new BufferedWriter(new FileWriter("questions.html"));
+        solutions = new BufferedWriter(new FileWriter("solutions.html"));
+        questions.write("<html>\n");
+        questions.write("<header><title>MathProblemGenerator</title></header>\n");
+        questions.write("<body>\n");
+        questions.write("Name_____________<br>\n");
         
-        file.write("<style>\n");
-        file.write("* {\n");
-        file.write("box-sizing: border-box;\n");
-        file.write("}\n");
+        questions.write("<style>\n");
+        questions.write("* {\n");
+        questions.write("box-sizing: border-box;\n");
+        questions.write("}\n");
 
         /* Create two equal columns that floats next to each other */
-        file.write(".column {\n");
-        file.write("float: left;\n");
-        file.write("width: 50%;\n");
-        file.write("padding: 10px;\n");
+        questions.write(".column {\n");
+        questions.write("float: left;\n");
+        questions.write("width: 50%;\n");
+        questions.write("padding: 10px;\n");
 
-        file.write("}\n");
+        questions.write("}\n");
 
         /* Clear floats after the columns\n */
-        file.write(".row:after {\n");
-        file.write("content: \"\";\n");
-        file.write("display: table;\n");
-        file.write("clear: both;\n");
-        file.write("}\n");
-        file.write("</style>\n");
+        questions.write(".row:after {\n");
+        questions.write("content: \"\";\n");
+        questions.write("display: table;\n");
+        questions.write("clear: both;\n");
+        questions.write("}\n");
+        questions.write("</style>\n");
         
-        file.write("<div class=\"row\">\n"); // start of column 1
-        file.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n");
+        questions.write("<div class=\"row\">\n"); // start of column 1
+        questions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n");
+        
+        solutions.write("<html>\n");
+        solutions.write("<header><title>MathProblemGenerator</title></header>\n");
+        solutions.write("<body>\n");
+        solutions.write("Solutions<br/>\n");
         
         
         
 
     }
 
-    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems) throws IOException//writes the file to html
+    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems) throws IOException//writes the questions to html
     {
         MathFunctions mathFunctions = new MathFunctions();
         
@@ -92,114 +99,149 @@ public class WriteFile {
         
         for (int i = 0; i < additionColumn1; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateAddition(totalProblems + 1));//passing i through to generate problem number; +1 to start at problem 1
-            file.write("<br>");//giving student space to work
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>");  
+            int[] values = mathFunctions.generateAddition(totalProblems + 1);//passing i through to generate problem number; +1 to start at problem 1
+            //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
+            String problem = (values[0] + ") " + values[1] + " + " + values[2] + " = " +  "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
+            questions.write("<br>");//giving student space to work
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>");  
             totalProblems++;
-            file.newLine();
+            questions.newLine();
+            
+            solutions.write(values[0] + ") " + values[1] + " + " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
 
         for (int i = 0; i < subtractionColumn1; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateSubtraction(totalProblems + 1));
+            
+            int[] values = mathFunctions.generateSubtraction(totalProblems + 1);
+            //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
             totalProblems++;
-            file.write("<br>");
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>"); 
-            file.newLine();
+            questions.write("<br>");
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>"); 
+            questions.newLine();
+            
+            solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
 
         }
 
 
         for (int i = 0; i < multiplicationColumn1; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateMultiplication(totalProblems + 1));
-            file.write("<br>");
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>"); 
+            int values[] = mathFunctions.generateMultiplication(totalProblems + 1);
+            //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
+            questions.write("<br>");
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>"); 
             totalProblems++;
-            file.newLine();
-
+            questions.newLine();
+            solutions.write(values[0] + ") " + values[1] + " * " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
 
         for (int i = 0; i < divisionColumn1; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateDivision(totalProblems + 1));
-            file.write("<br>");
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>"); 
+            int values[] = mathFunctions.generateDivision(totalProblems + 1);
+            //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
+            questions.write("<br>");
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>"); 
             totalProblems++;
-            file.newLine();
-
+            questions.newLine();
+            solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
-        file.write("</div>\n");//end of column1
-        file.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); //start of column2
+        questions.write("</div>\n");//end of column1
+        questions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); //start of column2
 
         for (int i = 0; i < additionColumn2; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateAddition(totalProblems + 1));//passing i through to generate problem number; +1 to start at problem 1
-            file.write("<br>");
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>"); 
+            int[] values = mathFunctions.generateAddition(totalProblems + 1);//passing i through to generate problem number; +1 to start at problem 1
+            //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
+            String problem = (values[0] + ") " + values[1] + " + " + values[2] + " = " + "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
+            questions.write("<br>");
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>"); 
             totalProblems++;
-            file.newLine();
+            questions.newLine();
+            solutions.write(values[0] + ") " + values[1] + " + " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
 
         for (int i = 0; i < subtractionColumn2; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateSubtraction(totalProblems + 1));
-            file.write("<br>");
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>"); 
+            int[] values = mathFunctions.generateSubtraction(totalProblems + 1);
+            //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
             totalProblems++;
-            file.newLine();
+            questions.write("<br>");
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>"); 
+            questions.newLine();
+            
+            solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
 
         }
 
 
         for (int i = 0; i < multiplicationColumn2; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateMultiplication(totalProblems + 1));
-            file.write("<br>");
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>"); 
+            int values[] = mathFunctions.generateMultiplication(totalProblems + 1);
+            //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
+            questions.write("<br>");
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>"); 
             totalProblems++;
-            file.newLine();
-
+            questions.newLine();
+            solutions.write(values[0] + ") " + values[1] + " * " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
         for (int i = 0; i < divisionColumn2; i++) //generates a number of problems based on what the user specified
         {
-            file.write(mathFunctions.generateDivision(totalProblems + 1));
-            file.write("<br>");
-            file.write("<br>");  
-            file.write("<br>");  
-            file.write("<br>"); 
+            int values[] = mathFunctions.generateDivision(totalProblems + 1);
+            //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
+            questions.write(problem + "<br>" + "\n");
+            questions.write("<br>");
+            questions.write("<br>");  
+            questions.write("<br>");  
+            questions.write("<br>"); 
             totalProblems++;
-            file.newLine();
-
+            questions.newLine();
+            solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
         }    
 
-        file.write("</div>\n");//end of column2
-        file.write("</div>\n");
+        questions.write("</div>\n");//end of column2
+        questions.write("</div>\n");
         
     }
 
     public void endFile() throws IOException {
-        file.write("<body>\n");
-        file.write("<html>\n");
-        file.close();
+        questions.write("<body>\n");
+        questions.write("<html>\n");
+        questions.close();
+        solutions.write("<body>\n");
+        solutions.write("<html>\n");
+        solutions.close();
     }
 }
