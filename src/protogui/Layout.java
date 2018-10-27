@@ -158,15 +158,20 @@ public class Layout extends JFrame implements ActionListener {
                 writeFile.startFile();
                 
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
-                writeFile.writeFile(mathFunctions.getAdditionProblems(), "addition");
+                
                 mathFunctions.setSubtractionProblems(Integer.parseInt(subInput.getText()));
-                writeFile.writeFile(mathFunctions.getSubtractionProblems(), "subtraction");
+
                 mathFunctions.setMultiplicationProblems(Integer.parseInt(multInput.getText()));
-                writeFile.writeFile(mathFunctions.getMultiplicationProblems(), "multiplication");
+
                 mathFunctions.setDivisionProblems(Integer.parseInt(divInput.getText()));
-                writeFile.writeFile(mathFunctions.getDivisionProblems(), "division");
+                writeFile.writeFile(mathFunctions.getAdditionProblems(),
+                                    mathFunctions.getSubtractionProblems(),
+                                    mathFunctions.getMultiplicationProblems(),
+                                    mathFunctions.getDivisionProblems()
+                                    );
                 
                 writeFile.endFile();
+                writeFile.totalProblems = 0; // resets problems counter incase of multiples generations
             } catch (Exception IOException) {
 
             }
