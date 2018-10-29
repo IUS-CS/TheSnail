@@ -5,6 +5,8 @@
  */
 package protogui;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 /**
  *
  * @author Thomas
@@ -17,9 +19,13 @@ public class ProtoGUI {
     public static void main(String[] args) {
         Layout layout1 = new Layout();
         layout1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        layout1.setSize(500,500);
-        layout1.setVisible(true);        
+
+        layout1.setSize(1000,1000);
+        layout1.setVisible(true);
         layout1.setLocation(550, 500);
+        
+        
+
     }
     
 }
