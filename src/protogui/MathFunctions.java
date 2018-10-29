@@ -62,57 +62,62 @@ public class MathFunctions {
         return divisionProblems;
     }
         
-    public String generateAddition(int problemNumber)//generates addition problems
+    public int[] generateAddition(int problemNumber)//generates addition problems
     {
         Random rand = new Random();
         int num1 = rand.nextInt(10) + 1;
         int num2 = rand.nextInt(10) + 1;
         int sum = num1 + num2;
+        //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
+        int sumArr[] = {problemNumber,num1,num2,sum};
                 
-        String problem = (problemNumber + ") " + num1 + " + " + num2 + " = " + sum + "<br>" + "\n");
-        return problem;
+        
+        return sumArr;
     }
     
-    public String generateSubtraction(int problemNumber)//generates addition problems
+    public int[] generateSubtraction(int problemNumber)//generates addition problems
     {
         Random rand = new Random();
         int num1 = rand.nextInt(10) + 1;
         int num2 = rand.nextInt(10) + 1;
         int sum;
         String problem;
+        //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
         if (num1 > num2){
-            sum = num1 - num2;
-            problem = (problemNumber + ") " + num1 + " - " + num2 + " = " + sum + "<br>" + "\n");
+            sum = num1 - num2;           
+            int subArr[] = {problemNumber, num1, num2, sum};
+            return subArr;
+            
         }
         else{
-            sum = num2-num1;
-            problem = (problemNumber + ") " + num2 + " - " + num1 + " = " + sum + "<br>" + "\n");
-        }
-                
-        return problem;
+            sum = num2-num1;            
+            int subArr[] = {problemNumber, num2, num1, sum};
+            return subArr;
+        }            
     }
     
-    public String generateMultiplication(int problemNumber)//generates addition problems
+    public int[] generateMultiplication(int problemNumber)//generates addition problems
     {
         Random rand = new Random();
         int num1 = rand.nextInt(10) + 1;
         int num2 = rand.nextInt(10) + 1;
         int sum = num1 * num2;
-                
-        String problem = (problemNumber + ") " + num1 + " * " + num2 + " = " + sum + "<br>" + "\n");
-        return problem;
+        //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+        int mulArr[] = {problemNumber, num1, num2, sum};
+        return mulArr;
     }
     
-    public String generateDivision(int problemNumber)//generates addition problems
+    public int[] generateDivision(int problemNumber)//generates addition problems
     {
         Random rand = new Random();
         int num1 = rand.nextInt(9) + 2;
         int num2 = rand.nextInt(9) + 2;
         int ans = num1 * num2;
         String problem;
-        
+        //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
         problem = (problemNumber + ") " + ans + " / " + num2 + " = " + num1 + "<br>" + "\n");
+        int divArr[] = {problemNumber, ans, num2, num1};
           
-        return problem;
+        return divArr;
     }
 }

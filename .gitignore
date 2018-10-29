@@ -40,6 +40,8 @@ ehthumbs.db
 ehthumbs_vista.db
 
 output.html
+solutions.html
+questions.html
 
 ### Maven ###
 target/
