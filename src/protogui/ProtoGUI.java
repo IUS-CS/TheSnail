@@ -20,7 +20,7 @@ public class ProtoGUI {
         Layout layout1 = new Layout();
         layout1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        layout1.setSize(1000,1000);
+        layout1.setSize(700,700);
         layout1.setVisible(true);
         layout1.setLocation(550, 500);
         
