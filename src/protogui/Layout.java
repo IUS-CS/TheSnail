@@ -33,7 +33,12 @@ public class Layout extends JFrame implements ActionListener {
     JScrollPane scroll;
     MathFunctions mathFunctions = new MathFunctions();
     WriteFile writeFile = new WriteFile();
-   
+    
+    ButtonGroup buttonGroup1 = new ButtonGroup();
+    ButtonGroup buttonGroup2 = new ButtonGroup();
+    ButtonGroup buttonGroup3 = new ButtonGroup();
+    ButtonGroup buttonGroup4 = new ButtonGroup();
+    JRadioButton ea,n,h;
     
 
     public Layout() {
@@ -85,57 +90,58 @@ public class Layout extends JFrame implements ActionListener {
         print.addActionListener(this);
         add(print);
         
-        JRadioButton y,n,c;
+        
         panel = new JPanel();
-        ButtonGroup buttonGroup = new ButtonGroup();
-        y = new JRadioButton("easy");
-        buttonGroup.add(y);
-        panel.add(y);
+        
+        
+        ea = new JRadioButton("easy");
+        buttonGroup1.add(ea);
+        panel.add(ea);
         n = new JRadioButton("normal");
-        buttonGroup.add(n);
+        buttonGroup1.add(n);
         panel.add(n);
-        c = new JRadioButton("hard");
-        buttonGroup.add(c);
-        panel.add(c);
+        h = new JRadioButton("hard");
+        buttonGroup1.add(h);
+        panel.add(h);
         panel.setBounds(190, 60, 210, 35);
         add(panel);
         
         panel2 = new JPanel();
-        y = new JRadioButton("easy");
-        buttonGroup.add(y);
-        panel2.add(y);
+        ea = new JRadioButton("easy");
+        buttonGroup2.add(ea);
+        panel2.add(ea);
         n = new JRadioButton("normal");
-        buttonGroup.add(n);
+        buttonGroup2.add(n);
         panel2.add(n);
-        c = new JRadioButton("hard");
-        buttonGroup.add(c);
-        panel2.add(c);
+        h = new JRadioButton("hard");
+        buttonGroup2.add(h);
+        panel2.add(h);
         panel2.setBounds(190, 95, 210, 35);
         add(panel2);
         
         panel3 = new JPanel();
-        y = new JRadioButton("easy");
-        buttonGroup.add(y);
-        panel3.add(y);
+        ea = new JRadioButton("easy");
+        buttonGroup3.add(ea);
+        panel3.add(ea);
         n = new JRadioButton("normal");
-        buttonGroup.add(n);
+        buttonGroup3.add(n);
         panel3.add(n);
-        c = new JRadioButton("hard");
-        buttonGroup.add(c);
-        panel3.add(c);
+        h = new JRadioButton("hard");
+        buttonGroup3.add(h);
+        panel3.add(h);
         panel3.setBounds(190, 125, 210, 35);
         add(panel3);
        
         panel4 = new JPanel();
-        y = new JRadioButton("easy");
-        buttonGroup.add(y);
-        panel4.add(y);
+        ea = new JRadioButton("easy");
+        buttonGroup4.add(ea);
+        panel4.add(ea);
         n = new JRadioButton("normal");
-        buttonGroup.add(n);
+        buttonGroup4.add(n);
         panel4.add(n);
-        c = new JRadioButton("hard");
-        buttonGroup.add(c);
-        panel4.add(c);
+        h = new JRadioButton("hard");
+        buttonGroup4.add(h);
+        panel4.add(h);
         panel4.setBounds(190, 155, 210, 35);
         add(panel4);
         
@@ -156,9 +162,18 @@ public class Layout extends JFrame implements ActionListener {
         if (e.getSource() == print) {
             try {
                 writeFile.startFile();
+                System.out.println("Selected Radio Button: " + buttonGroup1.getSelection().getActionCommand());
                 
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
-                
+                if (buttonGroup1.getSelection().getActionCommand().equals("ea")){
+                    mathFunctions.setAddDiff("easy");
+                }
+                //else if(buttonGroup1.isSelected(n)){
+                    //mathFunctions.setAddDiff("normal");
+                //}
+                else{
+                    mathFunctions.setAddDiff("hard");
+                }
                 mathFunctions.setSubtractionProblems(Integer.parseInt(subInput.getText()));
 
                 mathFunctions.setMultiplicationProblems(Integer.parseInt(multInput.getText()));
