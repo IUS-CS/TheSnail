@@ -17,6 +17,7 @@ public class MathFunctions {
     private int subtractionProblems = 0;
     private int multiplicationProblems = 0;
     private int divisionProblems = 0;
+    private String addDiff;
     
     //Setters for problem types
     
@@ -40,6 +41,10 @@ public class MathFunctions {
         divisionProblems = x;
     }
     
+    public void setAddDiff (String difficulty){
+        addDiff = difficulty;
+    }
+    
     //Getters for problem types
     
     public int getAdditionProblems()
@@ -60,6 +65,10 @@ public class MathFunctions {
     public int getDivisionProblems()
     {
         return divisionProblems;
+    }
+    
+    public String getAddDiff (){
+        return addDiff;
     }
         
     public int[] generateAddition(int problemNumber)//generates addition problems
