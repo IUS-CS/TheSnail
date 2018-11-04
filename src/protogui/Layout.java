@@ -161,10 +161,10 @@ public class Layout extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == print) {
             try {
-                writeFile.startFile();
+                /*
                 System.out.println("Selected Radio Button: " + buttonGroup1.getSelection().getActionCommand());
                 
-                mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
+                
                 if (buttonGroup1.getSelection().getActionCommand().equals("ea")){
                     mathFunctions.setAddDiff("easy");
                 }
@@ -174,10 +174,11 @@ public class Layout extends JFrame implements ActionListener {
                 else{
                     mathFunctions.setAddDiff("hard");
                 }
+                */
+                writeFile.startFile();
+                mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
                 mathFunctions.setSubtractionProblems(Integer.parseInt(subInput.getText()));
-
                 mathFunctions.setMultiplicationProblems(Integer.parseInt(multInput.getText()));
-
                 mathFunctions.setDivisionProblems(Integer.parseInt(divInput.getText()));
                 writeFile.writeFile(mathFunctions.getAdditionProblems(),
                                     mathFunctions.getSubtractionProblems(),
