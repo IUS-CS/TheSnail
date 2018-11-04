@@ -102,13 +102,7 @@ public class WriteFile {
             int[] values = mathFunctions.generateAddition(totalProblems + 1);//passing i through to generate problem number; +1 to start at problem 1
             //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
             String problem = (values[0] + ") " + values[1] + " + " + values[2] + " = " +  "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            questions.write("<br>");//giving student space to work
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>");  
-            totalProblems++;
-            questions.newLine();
+            basicArithmeticGeneration(problem);
             
             solutions.write(values[0] + ") " + values[1] + " + " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
@@ -120,13 +114,7 @@ public class WriteFile {
             int[] values = mathFunctions.generateSubtraction(totalProblems + 1);
             //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            totalProblems++;
-            questions.write("<br>");
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>"); 
-            questions.newLine();
+            basicArithmeticGeneration(problem);
             
             solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
 
@@ -138,13 +126,7 @@ public class WriteFile {
             int values[] = mathFunctions.generateMultiplication(totalProblems + 1);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            questions.write("<br>");
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>"); 
-            totalProblems++;
-            questions.newLine();
+            basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " * " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
@@ -154,13 +136,7 @@ public class WriteFile {
             int values[] = mathFunctions.generateDivision(totalProblems + 1);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            questions.write("<br>");
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>"); 
-            totalProblems++;
-            questions.newLine();
+            basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
@@ -172,13 +148,7 @@ public class WriteFile {
             int[] values = mathFunctions.generateAddition(totalProblems + 1);//passing i through to generate problem number; +1 to start at problem 1
             //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
             String problem = (values[0] + ") " + values[1] + " + " + values[2] + " = " + "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            questions.write("<br>");
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>"); 
-            totalProblems++;
-            questions.newLine();
+            basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " + " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
@@ -188,14 +158,7 @@ public class WriteFile {
             int[] values = mathFunctions.generateSubtraction(totalProblems + 1);
             //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            totalProblems++;
-            questions.write("<br>");
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>"); 
-            questions.newLine();
-            
+            basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
 
         }
@@ -206,13 +169,7 @@ public class WriteFile {
             int values[] = mathFunctions.generateMultiplication(totalProblems + 1);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            questions.write("<br>");
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>"); 
-            totalProblems++;
-            questions.newLine();
+            basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " * " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
 
@@ -221,13 +178,7 @@ public class WriteFile {
             int values[] = mathFunctions.generateDivision(totalProblems + 1);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
-            questions.write(problem + "<br>" + "\n");
-            questions.write("<br>");
-            questions.write("<br>");  
-            questions.write("<br>");  
-            questions.write("<br>"); 
-            totalProblems++;
-            questions.newLine();
+            basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
         }    
 
@@ -243,5 +194,15 @@ public class WriteFile {
         solutions.write("<body>\n");
         solutions.write("<html>\n");
         solutions.close();
+    }
+    
+    public void basicArithmeticGeneration(String problem) throws IOException
+    {
+        
+        questions.write(problem + "<br>" + "\n");
+            for(int j = 0; j < 4; j++)
+                questions.write("<br>" + "\n");//giving student space to work           
+            totalProblems++;
+            questions.newLine();
     }
 }
