@@ -25,11 +25,11 @@ import java.io.*;
  */
 public class Layout extends JFrame implements ActionListener {
 
-    private JLabel addLabel, genLabel, subLabel, multLabel, divLabel;
-    JTextField addinput, output, subInput, multInput, divInput;
+    private JLabel addLabel, genLabel, subLabel, multLabel, divLabel, expLabel;
+    JTextField addinput, output, subInput, multInput, divInput, expInput;
     JButton print;
     //JFrame frame2;
-    JPanel panel, panel2, panel3, panel4, panel5;
+    JPanel panel, panel2, panel3, panel4, panel5, panel6;
     JScrollPane scroll;
     MathFunctions mathFunctions = new MathFunctions();
     WriteFile writeFile = new WriteFile();
@@ -38,11 +38,13 @@ public class Layout extends JFrame implements ActionListener {
     ButtonGroup buttonGroup2 = new ButtonGroup();
     ButtonGroup buttonGroup3 = new ButtonGroup();
     ButtonGroup buttonGroup4 = new ButtonGroup();
+    ButtonGroup buttonGroup5 = new ButtonGroup();
     
     JRadioButton ea1,n1,h1;
     JRadioButton ea2,n2,h2;
     JRadioButton ea3,n3,h3;
     JRadioButton ea4,n4,h4;
+    JRadioButton ea5,n5,h5;
     
 
     public Layout() {
@@ -67,6 +69,10 @@ public class Layout extends JFrame implements ActionListener {
         divLabel = new JLabel("Division");
         divLabel.setBounds(20, 160, 100, 10);
         add(divLabel);
+        
+        expLabel = new JLabel("Exponential");
+        expLabel.setBounds(20, 190, 100, 10);
+        add(expLabel);
 
         setLayout(null);
         addinput = new JTextField(5);
@@ -89,8 +95,13 @@ public class Layout extends JFrame implements ActionListener {
         divInput.setText("0");
         add(divInput);
 
+        expInput = new JTextField(5);
+        expInput.setBounds(100, 190, 100, 20);
+        expInput.setText("0");
+        add(expInput);
+        
         print = new JButton("Create Assignment");
-        print.setBounds(20, 200, 170, 20);
+        print.setBounds(20, 250, 170, 20);
         print.addActionListener(this);
         add(print);
         
@@ -153,14 +164,28 @@ public class Layout extends JFrame implements ActionListener {
         panel4.setBounds(190, 155, 210, 35);
         add(panel4);
         
-       panel5 = new JPanel();
+        panel5 = new JPanel();
+        ea5 = new JRadioButton("easy");
+        buttonGroup5.add(ea5);
+        panel5.add(ea5);
+        n5 = new JRadioButton("normal");
+        buttonGroup5.add(n5);
+        panel5.add(n5);
+        h5 = new JRadioButton("hard");
+        buttonGroup5.add(h5);
+        panel5.add(h5);
+        ea5.setSelected(true);
+        panel5.setBounds(190, 185, 210, 35);
+        add(panel5);
+        
+       panel6 = new JPanel();
        scroll = new JScrollPane();
        JScrollPane scrollBar=new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-       panel5.add(scrollBar);
-       panel5.setSize(400,400); 
-       panel5.setVisible(true);
-       panel5.setBounds(500, 800, 50, 70);
-       add(panel5);
+       panel6.add(scrollBar);
+       panel6.setSize(400,400); 
+       panel6.setVisible(true);
+       panel6.setBounds(500, 800, 50, 70);
+       add(panel6);
        //add(scroll);
       
     }
@@ -211,19 +236,32 @@ public class Layout extends JFrame implements ActionListener {
                     mathFunctions.setDivDiff("hard");
                 }
                 
+                if (ea5.isSelected()){
+                    mathFunctions.setExpDiff("easy");  
+                }
+                else if (n5.isSelected()){
+                    mathFunctions.setExpDiff("normal");
+                }
+                else{
+                    mathFunctions.setExpDiff("hard");
+                }
+                
                 writeFile.startFile();
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
                 mathFunctions.setSubtractionProblems(Integer.parseInt(subInput.getText()));
                 mathFunctions.setMultiplicationProblems(Integer.parseInt(multInput.getText()));
                 mathFunctions.setDivisionProblems(Integer.parseInt(divInput.getText()));
+                mathFunctions.setExponentProblems(Integer.parseInt(expInput.getText()));
                 writeFile.writeFile(mathFunctions.getAdditionProblems(),
                                     mathFunctions.getSubtractionProblems(),
                                     mathFunctions.getMultiplicationProblems(),
                                     mathFunctions.getDivisionProblems(),
+                                    mathFunctions.getExponentProblems(),
                                     mathFunctions.getAddDiff(),
                                     mathFunctions.getSubDiff(),
                                     mathFunctions.getMultDiff(),
-                                    mathFunctions.getDivDiff()
+                                    mathFunctions.getDivDiff(),
+                                    mathFunctions.getExpDiff()
                                     );
                 
                 writeFile.endFile();
