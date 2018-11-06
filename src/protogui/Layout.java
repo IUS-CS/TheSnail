@@ -107,6 +107,7 @@ public class Layout extends JFrame implements ActionListener {
         h1 = new JRadioButton("hard");
         buttonGroup1.add(h1);
         panel.add(h1);
+        ea1.setSelected(true);
         panel.setBounds(190, 60, 210, 35);
         add(panel);
         
@@ -120,6 +121,7 @@ public class Layout extends JFrame implements ActionListener {
         h2 = new JRadioButton("hard");
         buttonGroup2.add(h2);
         panel2.add(h2);
+        ea2.setSelected(true);
         panel2.setBounds(190, 95, 210, 35);
         add(panel2);
         
@@ -133,6 +135,7 @@ public class Layout extends JFrame implements ActionListener {
         h3 = new JRadioButton("hard");
         buttonGroup3.add(h3);
         panel3.add(h3);
+        ea3.setSelected(true);
         panel3.setBounds(190, 125, 210, 35);
         add(panel3);
        
@@ -146,6 +149,7 @@ public class Layout extends JFrame implements ActionListener {
         h4 = new JRadioButton("hard");
         buttonGroup4.add(h4);
         panel4.add(h4);
+        ea4.setSelected(true);
         panel4.setBounds(190, 155, 210, 35);
         add(panel4);
         
@@ -177,7 +181,35 @@ public class Layout extends JFrame implements ActionListener {
                     mathFunctions.setAddDiff("hard");
                 }
                 
+                if (ea2.isSelected()){
+                    mathFunctions.setSubDiff("easy");  
+                }
+                else if (n2.isSelected()){
+                    mathFunctions.setSubDiff("normal");
+                }
+                else{
+                    mathFunctions.setSubDiff("hard");
+                }
                 
+                if (ea3.isSelected()){
+                    mathFunctions.setMultDiff("easy");  
+                }
+                else if (n3.isSelected()){
+                    mathFunctions.setMultDiff("normal");
+                }
+                else{
+                    mathFunctions.setMultDiff("hard");
+                }
+                
+                if (ea4.isSelected()){
+                    mathFunctions.setDivDiff("easy");  
+                }
+                else if (n4.isSelected()){
+                    mathFunctions.setDivDiff("normal");
+                }
+                else{
+                    mathFunctions.setDivDiff("hard");
+                }
                 
                 writeFile.startFile();
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
@@ -188,7 +220,10 @@ public class Layout extends JFrame implements ActionListener {
                                     mathFunctions.getSubtractionProblems(),
                                     mathFunctions.getMultiplicationProblems(),
                                     mathFunctions.getDivisionProblems(),
-                                    mathFunctions.getAddDiff()
+                                    mathFunctions.getAddDiff(),
+                                    mathFunctions.getSubDiff(),
+                                    mathFunctions.getMultDiff(),
+                                    mathFunctions.getDivDiff()
                                     );
                 
                 writeFile.endFile();

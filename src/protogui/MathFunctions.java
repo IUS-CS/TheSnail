@@ -17,7 +17,7 @@ public class MathFunctions {
     private int subtractionProblems = 0;
     private int multiplicationProblems = 0;
     private int divisionProblems = 0;
-    private String addDiff, subDiff;
+    private String addDiff, subDiff, multDiff, divDiff;
     
     //Setters for problem types
     
@@ -49,6 +49,14 @@ public class MathFunctions {
         subDiff = difficulty;
     }
     
+    public void setMultDiff (String difficulty){
+        multDiff = difficulty;
+    }
+    
+    public void setDivDiff (String difficulty){
+        divDiff = difficulty;
+    }
+    
     //Getters for problem types
     
     public int getAdditionProblems()
@@ -75,9 +83,18 @@ public class MathFunctions {
         return addDiff;
     }
     
-     public String getSubDiff (){
+    public String getSubDiff (){
         return subDiff;
     }
+     
+    public String getMultDiff (){
+        return multDiff;
+    }
+    
+    public String getDivDiff (){
+        return divDiff;
+    }
+        
         
     public int[] generateAddition(int problemNumber, String difficulty)//generates addition problems
     {
@@ -107,14 +124,29 @@ public class MathFunctions {
         return sumArr;
     }
     
-    public int[] generateSubtraction(int problemNumber)//generates addition problems
+    public int[] generateSubtraction(int problemNumber, String difficulty)//generates addition problems
     {
         Random rand = new Random();
-        int num1 = rand.nextInt(10) + 1;
-        int num2 = rand.nextInt(10) + 1;
+        int num1;
+        int num2;
         int sum;
         String problem;
         //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+        switch (difficulty) {
+            case "easy":
+                num1 = rand.nextInt(10) + 1;
+                num2 = rand.nextInt(10) + 1;
+                break;
+            case "normal":
+                num1 = rand.nextInt(90) + 10;
+                num2 = rand.nextInt(90) + 10;
+                break;
+            default:
+                num1 = rand.nextInt(900) + 100;
+                num2 = rand.nextInt(900) + 100;
+                break;
+        }
+        
         if (num1 > num2){
             sum = num1 - num2;           
             int subArr[] = {problemNumber, num1, num2, sum};
@@ -128,22 +160,52 @@ public class MathFunctions {
         }            
     }
     
-    public int[] generateMultiplication(int problemNumber)//generates addition problems
+    public int[] generateMultiplication(int problemNumber, String difficulty)//generates addition problems
     {
         Random rand = new Random();
-        int num1 = rand.nextInt(10) + 1;
-        int num2 = rand.nextInt(10) + 1;
+        int num1;
+        int num2;
+        
+        switch (difficulty) {
+            case "easy":
+                num1 = rand.nextInt(10) + 1;
+                num2 = rand.nextInt(10) + 1;
+                break;
+            case "normal":
+                num1 = rand.nextInt(9) + 2;
+                num2 = rand.nextInt(90) + 10;
+                break;
+            default:
+                num1 = rand.nextInt(9) + 2;
+                num2 = rand.nextInt(900) + 100;
+                break;
+        }
         int sum = num1 * num2;
         //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
         int mulArr[] = {problemNumber, num1, num2, sum};
         return mulArr;
     }
     
-    public int[] generateDivision(int problemNumber)//generates addition problems
+    public int[] generateDivision(int problemNumber, String difficulty)//generates addition problems
     {
         Random rand = new Random();
-        int num1 = rand.nextInt(9) + 2;
-        int num2 = rand.nextInt(9) + 2;
+        int num1;
+        int num2;
+        
+        switch (difficulty) {
+            case "easy":
+                num1 = rand.nextInt(9) + 2;
+                num2 = rand.nextInt(9) + 2;
+                break;
+            case "normal":
+                num1 = rand.nextInt(9) + 2;
+                num2 = rand.nextInt(89) + 11;
+                break;
+            default:
+                num1 = rand.nextInt(9) + 2;
+                num2 = rand.nextInt(899) + 101;
+                break;
+        }
         int ans = num1 * num2;
         String problem;
         //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
