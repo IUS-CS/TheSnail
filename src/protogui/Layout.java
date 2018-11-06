@@ -38,7 +38,11 @@ public class Layout extends JFrame implements ActionListener {
     ButtonGroup buttonGroup2 = new ButtonGroup();
     ButtonGroup buttonGroup3 = new ButtonGroup();
     ButtonGroup buttonGroup4 = new ButtonGroup();
-    JRadioButton ea,n,h;
+    
+    JRadioButton ea1,n1,h1;
+    JRadioButton ea2,n2,h2;
+    JRadioButton ea3,n3,h3;
+    JRadioButton ea4,n4,h4;
     
 
     public Layout() {
@@ -94,54 +98,54 @@ public class Layout extends JFrame implements ActionListener {
         panel = new JPanel();
         
         
-        ea = new JRadioButton("easy");
-        buttonGroup1.add(ea);
-        panel.add(ea);
-        n = new JRadioButton("normal");
-        buttonGroup1.add(n);
-        panel.add(n);
-        h = new JRadioButton("hard");
-        buttonGroup1.add(h);
-        panel.add(h);
+        ea1 = new JRadioButton("easy");
+        buttonGroup1.add(ea1);
+        panel.add(ea1);
+        n1 = new JRadioButton("normal");
+        buttonGroup1.add(n1);
+        panel.add(n1);
+        h1 = new JRadioButton("hard");
+        buttonGroup1.add(h1);
+        panel.add(h1);
         panel.setBounds(190, 60, 210, 35);
         add(panel);
         
         panel2 = new JPanel();
-        ea = new JRadioButton("easy");
-        buttonGroup2.add(ea);
-        panel2.add(ea);
-        n = new JRadioButton("normal");
-        buttonGroup2.add(n);
-        panel2.add(n);
-        h = new JRadioButton("hard");
-        buttonGroup2.add(h);
-        panel2.add(h);
+        ea2 = new JRadioButton("easy");
+        buttonGroup2.add(ea2);
+        panel2.add(ea2);
+        n2 = new JRadioButton("normal");
+        buttonGroup2.add(n2);
+        panel2.add(n2);
+        h2 = new JRadioButton("hard");
+        buttonGroup2.add(h2);
+        panel2.add(h2);
         panel2.setBounds(190, 95, 210, 35);
         add(panel2);
         
         panel3 = new JPanel();
-        ea = new JRadioButton("easy");
-        buttonGroup3.add(ea);
-        panel3.add(ea);
-        n = new JRadioButton("normal");
-        buttonGroup3.add(n);
-        panel3.add(n);
-        h = new JRadioButton("hard");
-        buttonGroup3.add(h);
-        panel3.add(h);
+        ea3 = new JRadioButton("easy");
+        buttonGroup3.add(ea3);
+        panel3.add(ea3);
+        n3 = new JRadioButton("normal");
+        buttonGroup3.add(n3);
+        panel3.add(n3);
+        h3 = new JRadioButton("hard");
+        buttonGroup3.add(h3);
+        panel3.add(h3);
         panel3.setBounds(190, 125, 210, 35);
         add(panel3);
        
         panel4 = new JPanel();
-        ea = new JRadioButton("easy");
-        buttonGroup4.add(ea);
-        panel4.add(ea);
-        n = new JRadioButton("normal");
-        buttonGroup4.add(n);
-        panel4.add(n);
-        h = new JRadioButton("hard");
-        buttonGroup4.add(h);
-        panel4.add(h);
+        ea4 = new JRadioButton("easy");
+        buttonGroup4.add(ea4);
+        panel4.add(ea4);
+        n4 = new JRadioButton("normal");
+        buttonGroup4.add(n4);
+        panel4.add(n4);
+        h4 = new JRadioButton("hard");
+        buttonGroup4.add(h4);
+        panel4.add(h4);
         panel4.setBounds(190, 155, 210, 35);
         add(panel4);
         
@@ -161,20 +165,20 @@ public class Layout extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == print) {
             try {
-                /*
-                System.out.println("Selected Radio Button: " + buttonGroup1.getSelection().getActionCommand());
                 
-                
-                if (buttonGroup1.getSelection().getActionCommand().equals("ea")){
-                    mathFunctions.setAddDiff("easy");
+                //Checking which radio buttons are pressed
+                if (ea1.isSelected()){
+                    mathFunctions.setAddDiff("easy");  
                 }
-                //else if(buttonGroup1.isSelected(n)){
-                    //mathFunctions.setAddDiff("normal");
-                //}
+                else if (n1.isSelected()){
+                    mathFunctions.setAddDiff("normal");
+                }
                 else{
                     mathFunctions.setAddDiff("hard");
                 }
-                */
+                
+                
+                
                 writeFile.startFile();
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
                 mathFunctions.setSubtractionProblems(Integer.parseInt(subInput.getText()));
@@ -183,7 +187,8 @@ public class Layout extends JFrame implements ActionListener {
                 writeFile.writeFile(mathFunctions.getAdditionProblems(),
                                     mathFunctions.getSubtractionProblems(),
                                     mathFunctions.getMultiplicationProblems(),
-                                    mathFunctions.getDivisionProblems()
+                                    mathFunctions.getDivisionProblems(),
+                                    mathFunctions.getAddDiff()
                                     );
                 
                 writeFile.endFile();
