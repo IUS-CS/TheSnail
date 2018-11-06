@@ -62,7 +62,7 @@ public class WriteFile {
 
     }
 
-    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems) throws IOException//writes the questions to html
+    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems, String addDiff) throws IOException//writes the questions to html
     {
         MathFunctions mathFunctions = new MathFunctions();
         
@@ -99,7 +99,7 @@ public class WriteFile {
         
         for (int i = 0; i < additionColumn1; i++) //generates a number of problems based on what the user specified
         {
-            int[] values = mathFunctions.generateAddition(totalProblems + 1);//passing i through to generate problem number; +1 to start at problem 1
+            int[] values = mathFunctions.generateAddition(totalProblems + 1, addDiff );//passing i through to generate problem number; +1 to start at problem 1
             //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
             String problem = (values[0] + ") " + values[1] + " + " + values[2] + " = " +  "<br>" + "\n");
             basicArithmeticGeneration(problem);
@@ -145,7 +145,7 @@ public class WriteFile {
 
         for (int i = 0; i < additionColumn2; i++) //generates a number of problems based on what the user specified
         {
-            int[] values = mathFunctions.generateAddition(totalProblems + 1);//passing i through to generate problem number; +1 to start at problem 1
+            int[] values = mathFunctions.generateAddition(totalProblems + 1, addDiff);//passing i through to generate problem number; +1 to start at problem 1
             //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
             String problem = (values[0] + ") " + values[1] + " + " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);

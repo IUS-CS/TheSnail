@@ -17,7 +17,7 @@ public class MathFunctions {
     private int subtractionProblems = 0;
     private int multiplicationProblems = 0;
     private int divisionProblems = 0;
-    private String addDiff;
+    private String addDiff, subDiff;
     
     //Setters for problem types
     
@@ -45,6 +45,10 @@ public class MathFunctions {
         addDiff = difficulty;
     }
     
+    public void setSubDiff (String difficulty){
+        subDiff = difficulty;
+    }
+    
     //Getters for problem types
     
     public int getAdditionProblems()
@@ -70,13 +74,32 @@ public class MathFunctions {
     public String getAddDiff (){
         return addDiff;
     }
+    
+     public String getSubDiff (){
+        return subDiff;
+    }
         
-    public int[] generateAddition(int problemNumber)//generates addition problems
+    public int[] generateAddition(int problemNumber, String difficulty)//generates addition problems
     {
         Random rand = new Random();
-        int num1 = rand.nextInt(10) + 1;
-        int num2 = rand.nextInt(10) + 1;
-        int sum = num1 + num2;
+        
+        int num1, num2, sum;
+        switch (difficulty) {
+            case "easy":
+                num1 = rand.nextInt(10) + 1;
+                num2 = rand.nextInt(10) + 1;
+                break;
+            case "normal":
+                num1 = rand.nextInt(90) + 10;
+                num2 = rand.nextInt(90) + 10;
+                break;
+            default:
+                num1 = rand.nextInt(900) + 100;
+                num2 = rand.nextInt(900) + 100;
+                break;
+        }
+        
+        sum = num1 + num2;
         //ARRAY SETUP value[0] = prroblem number, value[1] = num1, value[2] = num2 and value[3] = sum
         int sumArr[] = {problemNumber,num1,num2,sum};
                 
