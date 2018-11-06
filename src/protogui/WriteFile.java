@@ -62,7 +62,8 @@ public class WriteFile {
 
     }
 
-    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems, String addDiff) throws IOException//writes the questions to html
+    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems, 
+            String addDiff, String subDiff, String multDiff, String divDiff) throws IOException//writes the questions to html
     {
         MathFunctions mathFunctions = new MathFunctions();
         
@@ -111,7 +112,7 @@ public class WriteFile {
         for (int i = 0; i < subtractionColumn1; i++) //generates a number of problems based on what the user specified
         {
             
-            int[] values = mathFunctions.generateSubtraction(totalProblems + 1);
+            int[] values = mathFunctions.generateSubtraction(totalProblems + 1, subDiff);
             //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
             basicArithmeticGeneration(problem);
@@ -123,7 +124,7 @@ public class WriteFile {
 
         for (int i = 0; i < multiplicationColumn1; i++) //generates a number of problems based on what the user specified
         {
-            int values[] = mathFunctions.generateMultiplication(totalProblems + 1);
+            int values[] = mathFunctions.generateMultiplication(totalProblems + 1, multDiff);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
@@ -133,7 +134,7 @@ public class WriteFile {
 
         for (int i = 0; i < divisionColumn1; i++) //generates a number of problems based on what the user specified
         {
-            int values[] = mathFunctions.generateDivision(totalProblems + 1);
+            int values[] = mathFunctions.generateDivision(totalProblems + 1, divDiff);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
@@ -155,7 +156,7 @@ public class WriteFile {
 
         for (int i = 0; i < subtractionColumn2; i++) //generates a number of problems based on what the user specified
         {
-            int[] values = mathFunctions.generateSubtraction(totalProblems + 1);
+            int[] values = mathFunctions.generateSubtraction(totalProblems + 1, subDiff);
             //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
             basicArithmeticGeneration(problem);
@@ -166,7 +167,7 @@ public class WriteFile {
 
         for (int i = 0; i < multiplicationColumn2; i++) //generates a number of problems based on what the user specified
         {
-            int values[] = mathFunctions.generateMultiplication(totalProblems + 1);
+            int values[] = mathFunctions.generateMultiplication(totalProblems + 1, multDiff);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
@@ -175,7 +176,7 @@ public class WriteFile {
 
         for (int i = 0; i < divisionColumn2; i++) //generates a number of problems based on what the user specified
         {
-            int values[] = mathFunctions.generateDivision(totalProblems + 1);
+            int values[] = mathFunctions.generateDivision(totalProblems + 1, divDiff);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);

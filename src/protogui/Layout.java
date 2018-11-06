@@ -177,7 +177,35 @@ public class Layout extends JFrame implements ActionListener {
                     mathFunctions.setAddDiff("hard");
                 }
                 
+                if (ea2.isSelected()){
+                    mathFunctions.setSubDiff("easy");  
+                }
+                else if (n2.isSelected()){
+                    mathFunctions.setSubDiff("normal");
+                }
+                else{
+                    mathFunctions.setSubDiff("hard");
+                }
                 
+                if (ea3.isSelected()){
+                    mathFunctions.setMultDiff("easy");  
+                }
+                else if (n3.isSelected()){
+                    mathFunctions.setMultDiff("normal");
+                }
+                else{
+                    mathFunctions.setMultDiff("hard");
+                }
+                
+                if (ea4.isSelected()){
+                    mathFunctions.setDivDiff("easy");  
+                }
+                else if (n4.isSelected()){
+                    mathFunctions.setDivDiff("normal");
+                }
+                else{
+                    mathFunctions.setDivDiff("hard");
+                }
                 
                 writeFile.startFile();
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
@@ -188,7 +216,10 @@ public class Layout extends JFrame implements ActionListener {
                                     mathFunctions.getSubtractionProblems(),
                                     mathFunctions.getMultiplicationProblems(),
                                     mathFunctions.getDivisionProblems(),
-                                    mathFunctions.getAddDiff()
+                                    mathFunctions.getAddDiff(),
+                                    mathFunctions.getSubDiff(),
+                                    mathFunctions.getMultDiff(),
+                                    mathFunctions.getDivDiff()
                                     );
                 
                 writeFile.endFile();
