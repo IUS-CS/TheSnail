@@ -62,8 +62,8 @@ public class WriteFile {
 
     }
 
-    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems, 
-            String addDiff, String subDiff, String multDiff, String divDiff) throws IOException//writes the questions to html
+    public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems, int exponentProblems, 
+            String addDiff, String subDiff, String multDiff, String divDiff, String expDiff) throws IOException//writes the questions to html
     {
         MathFunctions mathFunctions = new MathFunctions();
         
@@ -95,7 +95,12 @@ public class WriteFile {
             divisionColumn1 = (divisionProblems / 2);
         int divisionColumn2 = divisionProblems / 2;
         
-        
+        int exponentColumn1;
+        if(exponentProblems % 2 == 1)
+            exponentColumn1 = (exponentProblems / 2) + 1;
+        else 
+            exponentColumn1 = (exponentProblems / 2);
+        int exponentColumn2 = exponentProblems / 2;
 
         
         for (int i = 0; i < additionColumn1; i++) //generates a number of problems based on what the user specified
@@ -140,6 +145,15 @@ public class WriteFile {
             basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
+        
+        for (int i = 0; i < exponentColumn1; i++) //generates a number of problems based on what the user specified
+        {
+            int values[] = mathFunctions.generateExponent(totalProblems + 1, expDiff);
+            //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " ^ " + values[2] + " = " + "<br>" + "\n");
+            basicArithmeticGeneration(problem);
+            solutions.write(values[0] + ") " + values[1] + " ^ " + values[2] + " = " + values[3] + "<br>" + "\n");
+        }
 
         questions.write("</div>\n");//end of column1
         questions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); //start of column2
@@ -181,6 +195,15 @@ public class WriteFile {
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
+        }    
+        
+        for (int i = 0; i < exponentColumn2; i++) //generates a number of problems based on what the user specified
+        {
+            int values[] = mathFunctions.generateExponent(totalProblems + 1, expDiff);
+            //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+            String problem = (values[0] + ") " + values[1] + " ^ " + values[2] + " = " + "<br>" + "\n");
+            basicArithmeticGeneration(problem);
+            solutions.write(values[0] + ") " + values[1] + " ^ " + values[2] + " = " + values[3] + "<br>" + "\n");
         }    
 
         questions.write("</div>\n");//end of column2

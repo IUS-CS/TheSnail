@@ -17,7 +17,8 @@ public class MathFunctions {
     private int subtractionProblems = 0;
     private int multiplicationProblems = 0;
     private int divisionProblems = 0;
-    private String addDiff, subDiff, multDiff, divDiff;
+    private int exponentProblems = 0;
+    private String addDiff, subDiff, multDiff, divDiff, expDiff;
     
     //Setters for problem types
     
@@ -41,6 +42,11 @@ public class MathFunctions {
         divisionProblems = x;
     }
     
+    public void setExponentProblems(int x)
+    {
+        exponentProblems = x;
+    }
+    
     public void setAddDiff (String difficulty){
         addDiff = difficulty;
     }
@@ -57,6 +63,9 @@ public class MathFunctions {
         divDiff = difficulty;
     }
     
+    public void setExpDiff (String difficulty){
+        expDiff = difficulty;
+    }
     //Getters for problem types
     
     public int getAdditionProblems()
@@ -79,6 +88,12 @@ public class MathFunctions {
         return divisionProblems;
     }
     
+    public int getExponentProblems()
+    {
+         return exponentProblems;
+       
+    }
+    
     public String getAddDiff (){
         return addDiff;
     }
@@ -94,7 +109,10 @@ public class MathFunctions {
     public String getDivDiff (){
         return divDiff;
     }
-        
+     
+    public String getExpDiff (){
+        return expDiff;
+    }
         
     public int[] generateAddition(int problemNumber, String difficulty)//generates addition problems
     {
@@ -160,7 +178,7 @@ public class MathFunctions {
         }            
     }
     
-    public int[] generateMultiplication(int problemNumber, String difficulty)//generates addition problems
+    public int[] generateMultiplication(int problemNumber, String difficulty)//generates subtraction problems
     {
         Random rand = new Random();
         int num1;
@@ -186,7 +204,7 @@ public class MathFunctions {
         return mulArr;
     }
     
-    public int[] generateDivision(int problemNumber, String difficulty)//generates addition problems
+    public int[] generateDivision(int problemNumber, String difficulty)//generates division problems
     {
         Random rand = new Random();
         int num1;
@@ -213,5 +231,35 @@ public class MathFunctions {
         int divArr[] = {problemNumber, ans, num2, num1};
           
         return divArr;
+    }
+    
+    public int[] generateExponent(int problemNumber, String difficulty)//generates exponent problems
+    {
+        Random rand = new Random();
+        int num1;
+        int num2;
+        
+        switch (difficulty) {
+            case "easy":
+                num1 = rand.nextInt(9) + 2;
+                num2 = rand.nextInt(3) + 2;
+                break;
+            case "normal":
+                num1 = rand.nextInt(9) + 2;
+                num2 = rand.nextInt(5) + 2;
+                break;
+            default:
+                num1 = rand.nextInt(19) + 11;
+                num2 = rand.nextInt(5) + 2;
+                break;
+        }
+        int ans = (int)Math.pow(num1, num2);
+        String problem;
+        //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+        problem = (problemNumber + ") " + num1 + " ^ " + num2 + " = " + ans + "<br>" + "\n");
+        int expArr[] = {problemNumber, num1, num2, ans};
+        
+        return expArr;
+        //return null;
     }
 }
