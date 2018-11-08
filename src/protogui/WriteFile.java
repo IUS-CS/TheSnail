@@ -260,17 +260,11 @@ public class WriteFile {
             questions.newLine();
     }
     
-    public void additionSolutions(int problemNum, int operand1, int operand2, int sum) throws IOException
+    public String generateCarriedOnes(int num1, int num2)
     {
-            
-            
-            String solutionOnes = "&nbsp;&nbsp;";
-            
-            int num1 = operand1;
-            int num2 = operand2;
-            boolean carriedOne = false;
-            
-            while(num1 > 0)
+        boolean carriedOne = false;
+        String solutionOnes = "&nbsp;&nbsp;";
+        while(num1 > 0)
             {
                 int digit1 = num1 % 10;
                 int digit2 = num2 % 10;
@@ -289,14 +283,33 @@ public class WriteFile {
                 }
                 else
                 {
-                    solutionOnes = "&nbsp&nbsp;" + solutionOnes;
+                    solutionOnes = "&nbsp;&nbsp;" + solutionOnes;
                     carriedOne = false;
-                }          
-                    
+                } 
             }
-            String padding = "";
-            for(int j = 0; j < 4; j++)
-                padding += padding + "&emsp;";
+        return solutionOnes;
+    }
+    
+    public String generatePadding()
+    {
+        String padding = "";
+        for(int j = 0; j < 16; j++)
+        {
+            padding = padding + "&emsp;";
+        }
+        
+        return padding;
+    }
+    
+    public void additionSolutions(int problemNum, int operand1, int operand2, int sum) throws IOException
+    {
+            
+            int num1 = operand1;
+            int num2 = operand2;
+            
+            String solutionOnes = generateCarriedOnes(num1, num2);
+            
+            String padding = generatePadding();
             
             solutions.write("<div align=\"right\">" );
             solutions.write(problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" );//problem number

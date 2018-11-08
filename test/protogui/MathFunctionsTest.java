@@ -36,12 +36,21 @@ public class MathFunctionsTest {
         int x = 0;
         MathFunctions instance = new MathFunctions();
         instance.setAdditionProblems(x);
-        // TODO review the generated test code and remove the default call to fail.
         instance.setAdditionProblems(5);
         int expResult =5;
         int result = instance.getAdditionProblems();
-        // TODO review the generated test code and remove the default call to fail.
         assertEquals(expResult,result);
+    }
+    
+    //TODO SUBTRACTION 
+    
+    //TODO MULTIPLICATION
+    
+    //TODO DIVISION
+    
+    public void testGeneratePadding()
+    {
+        
     }
 
     
