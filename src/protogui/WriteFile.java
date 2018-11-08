@@ -92,40 +92,20 @@ public class WriteFile {
     {
         MathFunctions mathFunctions = new MathFunctions();
         
-        int additionColumn1;
-        if(additionProblems % 2 == 1)
-            additionColumn1 = (additionProblems / 2) + 1;
-        else 
-            additionColumn1 = (additionProblems / 2);
-        int additionColumn2 = additionProblems / 2;
+        int additionColumn1 = generateColumn1Numbers(additionProblems);
+        int additionColumn2 = generateColumn2Numbers(additionProblems);
         
-        int subtractionColumn1;
-        if(subtractionProblems % 2 == 1)
-            subtractionColumn1 = (subtractionProblems / 2) + 1;
-        else 
-            subtractionColumn1 = (subtractionProblems / 2);
-        int subtractionColumn2 = subtractionProblems / 2;
+        int subtractionColumn1 = generateColumn1Numbers(subtractionProblems);
+        int subtractionColumn2 = generateColumn2Numbers(subtractionProblems);
         
-        int multiplicationColumn1;
-        if(multiplicationProblems % 2 == 1)
-            multiplicationColumn1 = (multiplicationProblems / 2) + 1;
-        else 
-            multiplicationColumn1 = (multiplicationProblems / 2);
-        int multiplicationColumn2 = multiplicationProblems / 2;
+        int multiplicationColumn1 = generateColumn1Numbers(multiplicationProblems);;
+        int multiplicationColumn2 = generateColumn2Numbers(multiplicationProblems);
         
-        int divisionColumn1;
-        if(divisionProblems % 2 == 1)
-            divisionColumn1 = (divisionProblems / 2) + 1;
-        else 
-            divisionColumn1 = (divisionProblems / 2);
-        int divisionColumn2 = divisionProblems / 2;
+        int divisionColumn1 = generateColumn1Numbers(divisionProblems);;
+        int divisionColumn2 = generateColumn2Numbers(divisionProblems);
         
-        int exponentColumn1;
-        if(exponentProblems % 2 == 1)
-            exponentColumn1 = (exponentProblems / 2) + 1;
-        else 
-            exponentColumn1 = (exponentProblems / 2);
-        int exponentColumn2 = exponentProblems / 2;
+        int exponentColumn1 = generateColumn1Numbers(exponentProblems);;
+        int exponentColumn2 = generateColumn2Numbers(exponentProblems);
 
         
         for (int i = 0; i < additionColumn1; i++) //generates a number of problems based on what the user specified
@@ -258,6 +238,23 @@ public class WriteFile {
                 questions.write("<br>" + "\n");//giving student space to work           
             totalProblems++;
             questions.newLine();
+    }
+    
+    public int generateColumn1Numbers(int problemNumbers)
+    {
+        int numberColumn1;
+        if(problemNumbers % 2 == 1)
+            numberColumn1 = (problemNumbers / 2) + 1;
+        else 
+            numberColumn1 = (problemNumbers / 2);
+
+        return numberColumn1;
+    }
+    
+    public int generateColumn2Numbers(int problemNumbers)
+    {        
+        int numberColumn2 = problemNumbers / 2;
+        return numberColumn2;
     }
     
     public String generateCarriedOnes(int num1, int num2)
