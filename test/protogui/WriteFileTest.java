@@ -28,7 +28,7 @@ public class WriteFileTest {
     }
 
     /**
-     * Test of generateCarriedOnes method, of class WriteFile.
+     * Test of generateCarriedOnes method, of class WriteFile
      */
     //No Ones
     @Test
