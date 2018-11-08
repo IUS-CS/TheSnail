@@ -8,6 +8,7 @@ package protogui;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.*;
 
 /**
  *
@@ -57,6 +58,30 @@ public class WriteFile {
         solutions.write("<body>\n");
         solutions.write("Solutions<br/>\n");
         
+        //making solutions columns
+        solutions.write("<style>\n");
+        solutions.write("* {\n");
+        solutions.write("box-sizing: border-box;\n");
+        solutions.write("}\n");
+        
+        solutions.write(".column {\n"); 
+        solutions.write("float: left;\n");
+        solutions.write("width: 50%;\n");
+        solutions.write("padding: 10px;\n");
+
+        solutions.write("}\n");
+
+
+        solutions.write(".row:after {\n");
+        solutions.write("content: \"\";\n");
+        solutions.write("display: table;\n");
+        solutions.write("clear: both;\n");
+        solutions.write("}\n");
+        solutions.write("</style>\n");
+
+        solutions.write("<div class=\"row\">\n"); // start of column 1
+        solutions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n");
+        
         
         
 
@@ -105,7 +130,55 @@ public class WriteFile {
             String problem = (values[0] + ") " + values[1] + " + " + values[2] + " = " +  "<br>" + "\n");
             basicArithmeticGeneration(problem);
             
-            solutions.write(values[0] + ") " + values[1] + " + " + values[2] + " = " + values[3] + "<br>" + "\n");
+            int largestNum = Math.max(values[1],values[2]);
+            int smallestNum = Math.min(values[1],values[2]);
+            
+            int largestNumLength = String.valueOf(largestNum).length();
+            int smallestNumLength = String.valueOf(smallestNum).length();
+            int sumLength = String.valueOf(values[3]).length();
+            String solutionOnes = "&nbsp;&nbsp;";
+            
+            int num1 = values[1];
+            int num2 = values[2];
+            boolean carriedOne = false;
+            
+            while(num1 > 0)
+            {
+                int digit1 = num1 % 10;
+                int digit2 = num2 % 10;
+                
+                num1 = num1 / 10;
+                num2 = num2 / 10;
+                
+                int solution = digit1 + digit2;
+                if(carriedOne)//adding 1 if the last digits were greater than 10
+                    solution++;
+                
+                if(solution > 9)
+                {
+                    solutionOnes = "1" + solutionOnes;
+                    carriedOne = true;                    
+                }
+                else
+                {
+                    solutionOnes = "&nbsp&nbsp;" + solutionOnes;
+                    carriedOne = false;
+                }          
+                    
+            }
+            System.out.println(solutionOnes);
+            String padding = "";
+            for(int j = 0; j < 5; j++)
+                padding += padding + "&emsp;";
+            
+            solutions.write("<div align=\"right\">" );
+            solutions.write(values[0] + ") " + "&emsp;&emsp;" + "<br>" + "\n" );//problem number
+            solutions.write("<font size = \"3\" color = grey>" + solutionOnes + "<br>");//carried ones
+            solutions.write("<font size = \"3\" color = black>");
+            solutions.write(largestNum + "<br>" + "\n" );//operand 1
+            solutions.write("<u>" + "+ " + smallestNum + "</u>"  + "<br>" + "\n");//sign and operand 2
+            solutions.write(values[3] + "<br>" + "\n" ); // answer
+            solutions.write("</div>");
         }
 
 
@@ -120,7 +193,7 @@ public class WriteFile {
             solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
 
         }
-
+        
 
         for (int i = 0; i < multiplicationColumn1; i++) //generates a number of problems based on what the user specified
         {
@@ -143,6 +216,8 @@ public class WriteFile {
 
         questions.write("</div>\n");//end of column1
         questions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); //start of column2
+        solutions.write("</div>\n");//end of column1
+        solutions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); //start of column2
 
         for (int i = 0; i < additionColumn2; i++) //generates a number of problems based on what the user specified
         {
@@ -184,6 +259,9 @@ public class WriteFile {
         }    
 
         questions.write("</div>\n");//end of column2
+        
+        solutions.write("</div>\n");//end of column2
+        
         questions.write("</div>\n");
         
     }
