@@ -127,7 +127,9 @@ public class WriteFile {
             String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
             basicArithmeticGeneration(problem);
             
-            solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
+            //solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
+            int numberLength = ("" + values[1]).length();
+            generateCarriedSubtraction(values[0], values[1] , values[2], numberLength, values[3]);
 
         }
         
@@ -181,7 +183,8 @@ public class WriteFile {
             //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " - " + values[2] + " = " +  "<br>" + "\n");
             basicArithmeticGeneration(problem);
-            solutions.write(values[0] + ") " + values[1] + " - " + values[2] + " = " + values[3] + "<br>" + "\n");
+            int numberLength = ("" + values[1]).length();
+            generateCarriedSubtraction(values[0], values[1] , values[2], numberLength, values[3]);
 
         }
 
@@ -257,33 +260,102 @@ public class WriteFile {
         return numberColumn2;
     }
     
+    public String generateCarriedNumbers(int num1, int num2)
+    {
+        String carriedDigits = "&nbsp;&nbsp;";
+        while(num1 > 0)
+        {
+            int dig1 = num1 % 10;
+            int dig2 = num2 % 10;            
+            
+            
+            num1 = num1 / 10;
+            num2 = num2 / 10;
+            int sub = dig1 - dig2;
+            
+            if(sub < 0)
+            {
+                dig1 = num1 % 10;
+                num1 = num1 / 10;
+                num2 = num2 / 10;
+                
+                if(dig1 == 0)
+                    carriedDigits = 9 + carriedDigits;
+                else
+                    carriedDigits = (dig1 - 1) + carriedDigits;
+                
+                
+                while(dig1 == 0)//looking for number to burrow a 1 from
+                {
+                    
+                    dig1 = num1 % 10;
+                    num1 = num1 / 10;
+                    num2 = num2 / 10;
+                    if(dig1 == 0)
+                    {
+                        carriedDigits = 9 + carriedDigits;
+                        
+                    }
+                    else
+                    {
+                        carriedDigits = (dig1 - 1) + carriedDigits;
+                    }
+                    
+                    
+                }
+            }
+            else
+            {
+                carriedDigits = "&nbsp;&nbsp;" + carriedDigits;
+            }
+        }
+        return carriedDigits;
+    }
+    
+    public void generateCarriedSubtraction(int problemNum, int num1 , int num2, int numberLength, int result) throws IOException
+    {                         
+        String padding = generatePadding();
+        
+        String carriedDigits = generateCarriedNumbers(num1,num2);
+        solutions.write("<div align=\"right\">" );
+        solutions.write(problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" );//problem number
+        solutions.write("<font size = \"3\" color = grey>" + carriedDigits + padding + "<br>");//carried ones
+        solutions.write("<font size = \"3\" color = black>");
+        solutions.write(num1 + padding + "<br>" + "\n" );//operand 1
+        solutions.write("<u>" + "- " + num2 + "</u>" + padding + "<br>" + "\n");//sign and operand 2
+        solutions.write(result + padding + "<br>" + "\n" ); // answer
+        solutions.write("</div>");
+    }
+    
     public String generateCarriedOnes(int num1, int num2)
     {
         boolean carriedOne = false;
         String solutionOnes = "&nbsp;&nbsp;";
         while(num1 > 0)
+        {
+            int digit1 = num1 % 10;
+            int digit2 = num2 % 10;
+                
+            num1 = num1 / 10;
+            num2 = num2 / 10;
+            
+            int solution = digit1 + digit2;
+            //DO NOT REMOVE LINE BELOW
+            if(carriedOne)//adding 1 if the last digits were greater than 10
+                solution++;
+            
+            
+            if(solution > 9)
             {
-                int digit1 = num1 % 10;
-                int digit2 = num2 % 10;
-                
-                num1 = num1 / 10;
-                num2 = num2 / 10;
-                
-                int solution = digit1 + digit2;
-                if(carriedOne)//adding 1 if the last digits were greater than 10
-                    solution++;
-                
-                if(solution > 9)
-                {
-                    solutionOnes = "1" + solutionOnes;
-                    carriedOne = true;                    
-                }
-                else
-                {
-                    solutionOnes = "&nbsp;&nbsp;" + solutionOnes;
-                    carriedOne = false;
-                } 
+                solutionOnes = "1" + solutionOnes;
+                carriedOne = true;                    
             }
+            else
+            {
+                solutionOnes = "&nbsp;&nbsp;" + solutionOnes;
+                carriedOne = false;
+            } 
+        }
         return solutionOnes;
     }
     
