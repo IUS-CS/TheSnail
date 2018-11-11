@@ -227,8 +227,8 @@ public class MathFunctions {
         int ans = num1 * num2;
         String problem;
         //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
-        problem = (problemNumber + ") " + ans + " / " + num2 + " = " + num1 + "<br>" + "\n");
-        int divArr[] = {problemNumber, ans, num2, num1};
+        problem = (problemNumber + ") " + ans + " / " + num1 + " = " + num2 + "<br>" + "\n");
+        int divArr[] = {problemNumber, ans, num1, num2};
           
         return divArr;
     }

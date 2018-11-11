@@ -149,7 +149,8 @@ public class WriteFile {
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
-            solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
+            //solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
+            divisionSolutions(values[0],values[1],values[2],values[3]);
         }
         
         for (int i = 0; i < exponentColumn1; i++) //generates a number of problems based on what the user specified
@@ -259,6 +260,69 @@ public class WriteFile {
         int numberColumn2 = problemNumbers / 2;
         return numberColumn2;
     }
+        
+    public String generateCarriedOnes(int num1, int num2)
+    {
+        boolean carriedOne = false;
+        String solutionOnes = "&nbsp;&nbsp;";
+        while(num1 > 0)
+        {
+            int digit1 = num1 % 10;
+            int digit2 = num2 % 10;
+                
+            num1 = num1 / 10;
+            num2 = num2 / 10;
+            
+            int solution = digit1 + digit2;
+            //DO NOT REMOVE LINE BELOW
+            if(carriedOne)//adding 1 if the last digits were greater than 10
+                solution++;
+            
+            
+            if(solution > 9)
+            {
+                solutionOnes = "1" + solutionOnes;
+                carriedOne = true;                    
+            }
+            else
+            {
+                solutionOnes = "&nbsp;&nbsp;" + solutionOnes;
+                carriedOne = false;
+            } 
+        }
+        return solutionOnes;
+    }
+    
+    public String generatePadding()
+    {
+        String padding = "";
+        for(int j = 0; j < 16; j++)
+        {
+            padding = padding + "&emsp;";
+        }
+        
+        return padding;
+    }
+    
+    public void additionSolutions(int problemNum, int operand1, int operand2, int sum) throws IOException
+    {
+            
+            int num1 = operand1;
+            int num2 = operand2;
+            
+            String solutionOnes = generateCarriedOnes(num1, num2);
+            
+            String padding = generatePadding();
+            
+            solutions.write("<div align=\"right\">" );
+            solutions.write(problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" );//problem number
+            solutions.write("<font size = \"3\" color = grey>" + solutionOnes + padding + "<br>");//carried ones
+            solutions.write("<font size = \"3\" color = black>");
+            solutions.write(operand1 + padding + "<br>" + "\n" );//operand 1
+            solutions.write("<u>" + "+ " + operand2 + "</u>" + padding + "<br>" + "\n");//sign and operand 2
+            solutions.write(sum + padding + "<br>" + "\n" ); // answer
+            solutions.write("</div>");
+    }
     
     public String generateCarriedNumbers(int num1, int num2)
     {
@@ -327,66 +391,66 @@ public class WriteFile {
         solutions.write("</div>");
     }
     
-    public String generateCarriedOnes(int num1, int num2)
+    public String generateLongDivision(int dividend, int divisor)
     {
-        boolean carriedOne = false;
-        String solutionOnes = "&nbsp;&nbsp;";
-        while(num1 > 0)
-        {
-            int digit1 = num1 % 10;
-            int digit2 = num2 % 10;
-                
-            num1 = num1 / 10;
-            num2 = num2 / 10;
-            
-            int solution = digit1 + digit2;
-            //DO NOT REMOVE LINE BELOW
-            if(carriedOne)//adding 1 if the last digits were greater than 10
-                solution++;
-            
-            
-            if(solution > 9)
-            {
-                solutionOnes = "1" + solutionOnes;
-                carriedOne = true;                    
-            }
-            else
-            {
-                solutionOnes = "&nbsp;&nbsp;" + solutionOnes;
-                carriedOne = false;
-            } 
-        }
-        return solutionOnes;
-    }
-    
-    public String generatePadding()
-    {
-        String padding = "";
-        for(int j = 0; j < 16; j++)
-        {
-            padding = padding + "&emsp;";
-        }
+        String longDivision = "";
+        String mainPadding = generatePadding();
+        int subDividend = 0;
+        int leftOver = 0;
         
-        return padding;
+        while(dividend > 0)
+        { 
+            int length = Integer.toString(dividend).length();
+            int place = 1;
+            for (int i = 1; i < length; i++) //for chopping first number off
+            {
+                place *= 10;
+            }
+                        
+            subDividend = (leftOver * 10) + (dividend / place);
+            int digit = dividend / place;
+            dividend = dividend % place;            
+            
+            int subQoutient = (subDividend / divisor) * divisor;
+            String padding = "";
+            for (int i = 1; i < length - 1; i++) 
+            {
+                padding = "&nbsp;&nbsp;" + padding;
+            }
+            longDivision += "<u>-" + subQoutient  + "</u>" + "&nbsp;&nbsp;" + padding + mainPadding + "<br>";
+            int carryDown = ((leftOver * 10) + digit) - subQoutient;
+            leftOver = carryDown;
+            place = 1;
+            length = Integer.toString(dividend).length();
+            for (int i = 1; i < length; i++) //for chopping first number off
+            {
+                place *= 10;
+            }
+            int nextDigit = (dividend / place);
+            
+            
+            //System.out.print(carryDown);
+            System.out.println(nextDigit);
+            longDivision += Integer.toString(carryDown) + Integer.toString(nextDigit) + padding + mainPadding + "<br>";
+            
+        }
+        return longDivision;
     }
-    
-    public void additionSolutions(int problemNum, int operand1, int operand2, int sum) throws IOException
-    {
+             
+    public void divisionSolutions(int problemNum, int dividend, int divisor, int quotient) throws IOException
+    {              
             
-            int num1 = operand1;
-            int num2 = operand2;
-            
-            String solutionOnes = generateCarriedOnes(num1, num2);
-            
+            String longDivision = generateLongDivision(dividend,divisor);
             String padding = generatePadding();
+            
+            
             
             solutions.write("<div align=\"right\">" );
             solutions.write(problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" );//problem number
-            solutions.write("<font size = \"3\" color = grey>" + solutionOnes + padding + "<br>");//carried ones
+            solutions.write("<u>" + "&emsp;" + quotient + "</u>" + padding + "<br>");
             solutions.write("<font size = \"3\" color = black>");
-            solutions.write(operand1 + padding + "<br>" + "\n" );//operand 1
-            solutions.write("<u>" + "+ " + operand2 + "</u>" + padding + "<br>" + "\n");//sign and operand 2
-            solutions.write(sum + padding + "<br>" + "\n" ); // answer
+            solutions.write(divisor + "|" + dividend + padding + "<br>" + "\n" );//operand 1 
+            solutions.write(longDivision + "<br>" + "\n" );//operand 1 
             solutions.write("</div>");
     }
 }
