@@ -36,12 +36,55 @@ public class MathFunctionsTest {
         int x = 0;
         MathFunctions instance = new MathFunctions();
         instance.setAdditionProblems(x);
-        // TODO review the generated test code and remove the default call to fail.
         instance.setAdditionProblems(5);
         int expResult =5;
         int result = instance.getAdditionProblems();
-        // TODO review the generated test code and remove the default call to fail.
         assertEquals(expResult,result);
+    }
+    
+    //TODO SUBTRACTION 
+    /**
+     * Test of setAdditionProblems method, of class MathFunctions.
+     */
+    @Test
+    public void testSetSubtractionProblems() {
+        System.out.println("setSubtractionProblems");
+        int x = 0;
+        MathFunctions instance = new MathFunctions();
+        instance.setSubtractionProblems(x);
+        instance.setSubtractionProblems(5);
+        int expResult = 5;
+        int result = instance.getSubtractionProblems();
+        assertEquals(expResult,result);
+    }
+    
+    //TODO MULTIPLICATION
+     @Test
+    public void testSetMultiplicationProblems() {
+        System.out.println("setMultiplicationProblems");
+        int x = 0;
+        MathFunctions instance = new MathFunctions();
+        instance.setMultiplicationProblems(x);
+        instance.setMultiplicationProblems(5);
+        int expResult = 5;
+        int result = instance.getMultiplicationProblems();
+        assertEquals(expResult,result);
+    }
+    //TODO DIVISION
+        public void testSetDivisionProblems() {
+        System.out.println("setDIvisionProblems");
+        int x = 0;
+        MathFunctions instance = new MathFunctions();
+        instance.setDivisionProblems(x);
+        instance.setDivisionProblems(5);
+        int expResult = 5;
+        int result = instance.getDivisionProblems();
+        assertEquals(expResult,result);
+    }
+    //TODO PADDING TEST
+    public void testGeneratePadding()
+    {
+        
     }
 
     
