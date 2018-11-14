@@ -246,7 +246,7 @@ public class Layout extends JFrame implements ActionListener {
                     mathFunctions.setExpDiff("hard");
                 }
                 
-                writeFile.startFile();
+                writeFile.file();
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
                 mathFunctions.setSubtractionProblems(Integer.parseInt(subInput.getText()));
                 mathFunctions.setMultiplicationProblems(Integer.parseInt(multInput.getText()));
