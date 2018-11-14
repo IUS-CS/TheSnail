@@ -181,14 +181,4 @@ public class WriteFileTest {
     /**
      * Test of generatePadding method, of class WriteFile.
      */
-    
-    @Test
-    public void testGeneratePadding() {
-        System.out.println("generatePadding");
-        WriteFile instance = new WriteFile();
-        String expResult = "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;";
-        String result = instance.generatePadding();
-        assertEquals(expResult,result);
-    }
-    
 }
