@@ -391,47 +391,52 @@ public class WriteFile {
         solutions.write("</div>");
     }
     
-    public String generateLongDivision(int dividend, int divisor)
+    public String generateLongDivision(String dividend, int divisor)
     {
         String longDivision = "";
-        String mainPadding = generatePadding();
+        String mainPadding = generatePadding();//main padding to align with other types of problems
         int subDividend = 0;
         int leftOver = 0;
+        dividend += "0";
+        int checker = Integer.parseInt(dividend);
         
-        while(dividend > 0)
+        while(checker > 0)
         { 
-            int length = Integer.toString(dividend).length();
-            int place = 1;
-            for (int i = 1; i < length; i++) //for chopping first number off
-            {
-                place *= 10;
-            }
-                        
-            subDividend = (leftOver * 10) + (dividend / place);
-            int digit = dividend / place;
-            dividend = dividend % place;            
+            //System.out.println("Dividend" + dividend);
             
-            int subQoutient = (subDividend / divisor) * divisor;
+
+            
+
+                        
+            subDividend = (leftOver * 10) + Character.getNumericValue(dividend.charAt(0));//
+            //System.out.println("sd" + subDividend);
+            String toString = "" + dividend;
+            int digit = Character.getNumericValue(toString.charAt(0));
+            dividend = dividend.substring(1);        
+            
+            int subtraction = (subDividend / divisor) * divisor;//subQuotient * Divisor
             String padding = "";
-            for (int i = 1; i < length - 1; i++) 
+            for (int i = 1; i < dividend.length(); i++) //padding for numbers to be in correct column
             {
                 padding = "&nbsp;&nbsp;" + padding;
             }
-            longDivision += "<u>-" + subQoutient  + "</u>" + "&nbsp;&nbsp;" + padding + mainPadding + "<br>";
-            int carryDown = ((leftOver * 10) + digit) - subQoutient;
-            leftOver = carryDown;
-            place = 1;
-            length = Integer.toString(dividend).length();
-            for (int i = 1; i < length; i++) //for chopping first number off
-            {
-                place *= 10;
-            }
-            int nextDigit = (dividend / place);
+            longDivision += "<u>-" + subtraction  + "</u>" + "&nbsp;&nbsp;" + padding + mainPadding + "<br>" + "\n";
+            //System.out.println(digit + "d");
+            int carryDown = ((leftOver * 10) + digit);
+            //System.out.println(carryDown + "-" + subtraction);
+            leftOver = carryDown - subtraction;
+            //System.out.println(leftOver);
+
+            
+            int nextDigit = Character.getNumericValue(dividend.charAt(0));
             
             
-            //System.out.print(carryDown);
-            System.out.println(nextDigit);
-            longDivision += Integer.toString(carryDown) + Integer.toString(nextDigit) + padding + mainPadding + "<br>";
+            
+            //System.out.println("cd" + carryDown);
+            //System.out.println(nextDigit);
+            longDivision += Integer.toString(leftOver) + Integer.toString(nextDigit) + padding + mainPadding + "<br>" + "\n";
+            checker = Integer.parseInt(dividend);
+            //System.out.println(checker);
             
         }
         return longDivision;
@@ -439,17 +444,17 @@ public class WriteFile {
              
     public void divisionSolutions(int problemNum, int dividend, int divisor, int quotient) throws IOException
     {              
-            
-            String longDivision = generateLongDivision(dividend,divisor);
+            String toString = "" + dividend;
+            String longDivision = generateLongDivision(toString,divisor);
             String padding = generatePadding();
             
             
             
             solutions.write("<div align=\"right\">" );
             solutions.write(problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" );//problem number
-            solutions.write("<u>" + "&emsp;" + quotient + "</u>" + padding + "<br>");
+            solutions.write("<u>" + "&emsp;" + quotient + "</u>" + "&nbsp;&nbsp;" + padding + "<br>");
             solutions.write("<font size = \"3\" color = black>");
-            solutions.write(divisor + "|" + dividend + padding + "<br>" + "\n" );//operand 1 
+            solutions.write(divisor + "|" + dividend + padding + "&nbsp;&nbsp;" + "<br>" + "\n" );//operand 1 
             solutions.write(longDivision + "<br>" + "\n" );//operand 1 
             solutions.write("</div>");
     }
