@@ -90,10 +90,12 @@ public class WriteFile {
     }
 
     public void writeFile(int additionProblems,int subtractionProblems, int multiplicationProblems,int divisionProblems, int exponentProblems, 
-            String addDiff, String subDiff, String multDiff, String divDiff, String expDiff) throws IOException//writes the questions to html
+            String addDiff, String subDiff, String multDiff, String divDiff, String expDiff) throws IOException
+//writes the questions to html
     {
         MathFunctions mathFunctions = new MathFunctions();
         
+        //set up the number of each type of problem in each column
         int additionColumn1 = generateColumn1Numbers(additionProblems);
         int additionColumn2 = generateColumn2Numbers(additionProblems);
         
@@ -109,7 +111,7 @@ public class WriteFile {
         int exponentColumn1 = generateColumn1Numbers(exponentProblems);;
         int exponentColumn2 = generateColumn2Numbers(exponentProblems);
 
-        
+        //Start of Column1
         for (int i = 0; i < additionColumn1; i++) //generates a number of problems based on what the user specified
         {
             int[] values = mathFunctions.generateAddition(totalProblems + 1, addDiff );//passing i through to generate problem number; +1 to start at problem 1
@@ -162,11 +164,16 @@ public class WriteFile {
             basicArithmeticGeneration(problem);
             solutions.write(values[0] + ") " + values[1] + " ^ " + values[2] + " = " + values[3] + "<br>" + "\n");
         }
-
-        questions.write("</div>\n");//end of column1
-        questions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); //start of column2
-        solutions.write("</div>\n");//end of column1
-        solutions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); //start of column2
+        
+        questions.write("</div>\n");
+        solutions.write("</div>\n");
+        
+        //end of column1
+        
+        questions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); 
+        solutions.write("<div class=\"column\" style=\"background-color:#FFFFFF;\">\n"); 
+        
+        //start of column2
 
         for (int i = 0; i < additionColumn2; i++) //generates a number of problems based on what the user specified
         {
@@ -266,7 +273,7 @@ public class WriteFile {
     {
         boolean carriedOne = false;
         String solutionOnes = "&nbsp;&nbsp;";
-        while(num1 > 0)
+        while(num1 > 0) //still digits left to check
         {
             int digit1 = num1 % 10;
             int digit2 = num2 % 10;
@@ -280,14 +287,14 @@ public class WriteFile {
                 solution++;
             
             
-            if(solution > 9)
+            if(solution > 9)//did we carry a one
             {
-                solutionOnes = "1" + solutionOnes;
-                carriedOne = true;                    
+                solutionOnes = "1" + solutionOnes; //adds the carried one to be output line
+                carriedOne = true;                   
             }
             else
             {
-                solutionOnes = "&nbsp;&nbsp;" + solutionOnes;
+                solutionOnes = "&nbsp;&nbsp;" + solutionOnes; //leaves space in output line because no carried one
                 carriedOne = false;
             } 
         }
@@ -319,32 +326,35 @@ public class WriteFile {
         String carriedDigits = "&nbsp;&nbsp;";
         while(num1 > 0)
         {
-            int dig1 = num1 % 10;
-            int dig2 = num2 % 10;            
+            int dig1 = num1 % 10; //checks last digit
+            int dig2 = num2 % 10; //checks last digit        
             
             
-            num1 = num1 / 10;
-            num2 = num2 / 10;
+            num1 = num1 / 10; //cuts off last digit
+            num2 = num2 / 10; //cuts off last digit
             int sub = dig1 - dig2;
             
-            if(sub < 0)
+            if(sub < 0) //checks to see if user will need to carry a one
             {
                 dig1 = num1 % 10;
                 num1 = num1 / 10;
                 num2 = num2 / 10;
                 
+                //Take away one from the value you borrowed from
                 if(dig1 == 0)
-                    carriedDigits = 9 + carriedDigits;
+                    carriedDigits = 9 + carriedDigits; 
                 else
                     carriedDigits = (dig1 - 1) + carriedDigits;
                 
                 
-                while(dig1 == 0)//looking for number to burrow a 1 from
+                while(dig1 == 0)//looking for number to burrow a 1 from in case of 0
                 {
                     
                     dig1 = num1 % 10;
                     num1 = num1 / 10;
                     num2 = num2 / 10;
+                    
+                    //Take away one from the value you borrowed from
                     if(dig1 == 0)
                     {
                         carriedDigits = 9 + carriedDigits;
@@ -354,8 +364,6 @@ public class WriteFile {
                     {
                         carriedDigits = (dig1 - 1) + carriedDigits;
                     }
-                    
-                    
                 }
             }
             else

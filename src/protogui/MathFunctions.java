@@ -47,6 +47,8 @@ public class MathFunctions {
         exponentProblems = x;
     }
     
+    //Setters for Difficulty
+    
     public void setAddDiff (String difficulty){
         addDiff = difficulty;
     }
@@ -94,6 +96,8 @@ public class MathFunctions {
        
     }
     
+    //Getters for Difficulty
+    
     public String getAddDiff (){
         return addDiff;
     }
@@ -119,6 +123,7 @@ public class MathFunctions {
         Random rand = new Random();
         
         int num1, num2, sum;
+        //set up random numbers of varying lengths, depending on difficulty
         switch (difficulty) {
             case "easy":
                 num1 = rand.nextInt(10) + 1;
@@ -142,14 +147,13 @@ public class MathFunctions {
         return sumArr;
     }
     
-    public int[] generateSubtraction(int problemNumber, String difficulty)//generates addition problems
+    public int[] generateSubtraction(int problemNumber, String difficulty)//generates subtraction problems
     {
         Random rand = new Random();
         int num1;
         int num2;
         int sum;
-        String problem;
-        //ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
+        //set up random numbers of varying lengths, depending on difficulty
         switch (difficulty) {
             case "easy":
                 num1 = rand.nextInt(10) + 1;
@@ -165,8 +169,11 @@ public class MathFunctions {
                 break;
         }
         
+        //ensures that the larger number is always on top
+        //Answers will always be positive
         if (num1 > num2){
-            sum = num1 - num2;           
+            sum = num1 - num2;     
+//ARRAY SETUP value[0] = prroblem number, value[1] = operand1, value[2] = operand2 and value[3] = solution      
             int subArr[] = {problemNumber, num1, num2, sum};
             return subArr;
             
@@ -178,12 +185,12 @@ public class MathFunctions {
         }            
     }
     
-    public int[] generateMultiplication(int problemNumber, String difficulty)//generates subtraction problems
+    public int[] generateMultiplication(int problemNumber, String difficulty)//generates multiplication problems
     {
         Random rand = new Random();
         int num1;
         int num2;
-        
+        //set up random numbers of varying lengths, depending on difficulty
         switch (difficulty) {
             case "easy":
                 num1 = rand.nextInt(10) + 1;
@@ -209,7 +216,7 @@ public class MathFunctions {
         Random rand = new Random();
         int num1;
         int num2;
-        
+        //set up Random numbers of varying lengths, depending on difficulty
         switch (difficulty) {
             case "easy":
                 num1 = rand.nextInt(9) + 2;
@@ -238,7 +245,7 @@ public class MathFunctions {
         Random rand = new Random();
         int num1;
         int num2;
-        
+        //set up random numbers of varying lengths, depending on difficulty
         switch (difficulty) {
             case "easy":
                 num1 = rand.nextInt(9) + 2;
@@ -260,6 +267,5 @@ public class MathFunctions {
         int expArr[] = {problemNumber, num1, num2, ans};
         
         return expArr;
-        //return null;
     }
 }
