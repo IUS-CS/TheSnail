@@ -197,11 +197,11 @@ public class MathFunctions {
                 num2 = rand.nextInt(10) + 1;
                 break;
             case "normal":
-                num1 = rand.nextInt(9) + 2;
+                num1 = rand.nextInt(90) + 10;
                 num2 = rand.nextInt(90) + 10;
                 break;
             default:
-                num1 = rand.nextInt(9) + 2;
+                num1 = rand.nextInt(900) + 100;
                 num2 = rand.nextInt(900) + 100;
                 break;
         }
@@ -232,9 +232,7 @@ public class MathFunctions {
                 break;
         }
         int ans = num1 * num2;
-        String problem;
         //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
-        problem = (problemNumber + ") " + ans + " / " + num1 + " = " + num2 + "<br>" + "\n");
         int divArr[] = {problemNumber, ans, num1, num2};
           
         return divArr;
@@ -261,9 +259,7 @@ public class MathFunctions {
                 break;
         }
         int ans = (int)Math.pow(num1, num2);
-        String problem;
         //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
-        problem = (problemNumber + ") " + num1 + " ^ " + num2 + " = " + ans + "<br>" + "\n");
         int expArr[] = {problemNumber, num1, num2, ans};
         
         return expArr;
