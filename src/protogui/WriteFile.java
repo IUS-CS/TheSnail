@@ -20,6 +20,8 @@ public class WriteFile {
     BufferedWriter questions;
     BufferedWriter solutions;
     public int totalProblems = 0;
+    Padding paddingObj = new Padding();
+    Division division = new Division();
     
     public void startFile() throws IOException {
         questions = new BufferedWriter(new FileWriter("questions.html"));
@@ -149,8 +151,7 @@ public class WriteFile {
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
-            //solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
-            divisionSolutions(values[0],values[1],values[2],values[3]);
+            solutions.write(division.divisionSolutions(values[0],values[1],values[2],values[3]));
         }
         
         for (int i = 0; i < exponentColumn1; i++) //generates a number of problems based on what the user specified
@@ -204,8 +205,8 @@ public class WriteFile {
             int values[] = mathFunctions.generateDivision(totalProblems + 1, divDiff);
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " / " + values[2] + " = " + "<br>" + "\n");
-            basicArithmeticGeneration(problem);
-            solutions.write(values[0] + ") " + values[1] + " / " + values[2] + " = " + values[3] + "<br>" + "\n");
+            basicArithmeticGeneration(problem);            
+            solutions.write(division.divisionSolutions(values[0],values[1],values[2],values[3]));
         }    
         
         for (int i = 0; i < exponentColumn2; i++) //generates a number of problems based on what the user specified
@@ -293,17 +294,6 @@ public class WriteFile {
         return solutionOnes;
     }
     
-    public String generatePadding()
-    {
-        String padding = "";
-        for(int j = 0; j < 16; j++)
-        {
-            padding = padding + "&emsp;";
-        }
-        
-        return padding;
-    }
-    
     public void additionSolutions(int problemNum, int operand1, int operand2, int sum) throws IOException
     {
             
@@ -312,7 +302,7 @@ public class WriteFile {
             
             String solutionOnes = generateCarriedOnes(num1, num2);
             
-            String padding = generatePadding();
+            String padding = paddingObj.generatePadding();
             
             solutions.write("<div align=\"right\">" );
             solutions.write(problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" );//problem number
@@ -378,7 +368,7 @@ public class WriteFile {
     
     public void generateCarriedSubtraction(int problemNum, int num1 , int num2, int numberLength, int result) throws IOException
     {                         
-        String padding = generatePadding();
+        String padding = paddingObj.generatePadding();
         
         String carriedDigits = generateCarriedNumbers(num1,num2);
         solutions.write("<div align=\"right\">" );
@@ -391,71 +381,5 @@ public class WriteFile {
         solutions.write("</div>");
     }
     
-    public String generateLongDivision(String dividend, int divisor)
-    {
-        String longDivision = "";
-        String mainPadding = generatePadding();//main padding to align with other types of problems
-        int subDividend = 0;
-        int leftOver = 0;
-        dividend += "0";
-        int checker = Integer.parseInt(dividend);
-        
-        while(checker > 0)
-        { 
-            //System.out.println("Dividend" + dividend);
-            
 
-            
-
-                        
-            subDividend = (leftOver * 10) + Character.getNumericValue(dividend.charAt(0));//
-            //System.out.println("sd" + subDividend);
-            String toString = "" + dividend;
-            int digit = Character.getNumericValue(toString.charAt(0));
-            dividend = dividend.substring(1);        
-            
-            int subtraction = (subDividend / divisor) * divisor;//subQuotient * Divisor
-            String padding = "";
-            for (int i = 1; i < dividend.length(); i++) //padding for numbers to be in correct column
-            {
-                padding = "&nbsp;&nbsp;" + padding;
-            }
-            longDivision += "<u>-" + subtraction  + "</u>" + "&nbsp;&nbsp;" + padding + mainPadding + "<br>" + "\n";
-            //System.out.println(digit + "d");
-            int carryDown = ((leftOver * 10) + digit);
-            //System.out.println(carryDown + "-" + subtraction);
-            leftOver = carryDown - subtraction;
-            //System.out.println(leftOver);
-
-            
-            int nextDigit = Character.getNumericValue(dividend.charAt(0));
-            
-            
-            
-            //System.out.println("cd" + carryDown);
-            //System.out.println(nextDigit);
-            longDivision += Integer.toString(leftOver) + Integer.toString(nextDigit) + padding + mainPadding + "<br>" + "\n";
-            checker = Integer.parseInt(dividend);
-            //System.out.println(checker);
-            
-        }
-        return longDivision;
-    }
-             
-    public void divisionSolutions(int problemNum, int dividend, int divisor, int quotient) throws IOException
-    {              
-            String toString = "" + dividend;
-            String longDivision = generateLongDivision(toString,divisor);
-            String padding = generatePadding();
-            
-            
-            
-            solutions.write("<div align=\"right\">" );
-            solutions.write(problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" );//problem number
-            solutions.write("<u>" + "&emsp;" + quotient + "</u>" + "&nbsp;&nbsp;" + padding + "<br>");
-            solutions.write("<font size = \"3\" color = black>");
-            solutions.write(divisor + "|" + dividend + padding + "&nbsp;&nbsp;" + "<br>" + "\n" );//operand 1 
-            solutions.write(longDivision + "<br>" + "\n" );//operand 1 
-            solutions.write("</div>");
-    }
 }
