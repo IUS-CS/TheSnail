@@ -193,8 +193,8 @@ public class MathFunctions {
         //set up random numbers of varying lengths, depending on difficulty
         switch (difficulty) {
             case "easy":
-                num1 = rand.nextInt(10) + 1;
-                num2 = rand.nextInt(10) + 1;
+                num1 = rand.nextInt(9) + 1;
+                num2 = rand.nextInt(9) + 1;
                 break;
             case "normal":
                 num1 = rand.nextInt(90) + 10;
