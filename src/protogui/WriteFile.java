@@ -23,6 +23,7 @@ public class WriteFile {
     Padding paddingObj = new Padding();
     Addition addition = new Addition();
     Subtraction subtraction = new Subtraction();
+    Multiplication multiplication = new Multiplication();
     Division division = new Division();
 
     
@@ -181,7 +182,7 @@ public class WriteFile {
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
-            solutions.write(values[0] + ") " + values[1] + " * " + values[2] + " = " + values[3] + "<br>" + "\n");
+            solutions.write(multiplication.multiplicationSolutions(totalProblems, values[1], values[2]));
         }
 
 
