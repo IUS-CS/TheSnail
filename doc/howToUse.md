@@ -7,3 +7,6 @@ Once the application is running:
 5)Open the folder  
 6)Open the questions.html & solutions.html Web Browser.(Reccomend Google Chrome for Print Preview.)  
 7)Print the files and use!
+
+![image of front-end and architecure](../images/007407-blue-jelly-icon-arrows-hand-clear-pointer-right.png)
+
