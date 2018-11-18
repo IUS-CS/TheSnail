@@ -43,7 +43,7 @@ public class Multiplication
                     carriedNumbers = "&nbsp;&nbsp;" + carriedNumbers; //add a blank space to represent no carried number
                 }                
             }
-            runningCarried = "<br>"  + carriedNumbers + "&nbsp;&nbsp;" + padding + runningCarried; //add a break to create a new line for the carried numbers of the next digit           
+            runningCarried = "<br>" + "\n" + carriedNumbers + "&nbsp;&nbsp;" + padding + runningCarried; //add a break to create a new line for the carried numbers of the next digit           
         }
 
         return runningCarried;        
