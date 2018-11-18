@@ -42,8 +42,6 @@ public class DivisionTest {
                 0 + "&nbsp;&nbsp;" + padding + "<br>" + "\n";
         
         String result = instance.generateLongDivision(dividend, divisor);
-        System.out.println(expResult);
-        System.out.println(result);
         assertEquals(expResult, result);
 
     }
@@ -61,8 +59,7 @@ public class DivisionTest {
                 0 + "&nbsp;&nbsp;" + padding + "<br>" + "\n";
         
         String result = instance.generateLongDivision(dividend, divisor);
-        System.out.println(expResult);
-        System.out.println(result);
+
         assertEquals(expResult, result);
 
     }
@@ -85,8 +82,6 @@ public class DivisionTest {
                 "0" + "&nbsp;&nbsp;" + padding + "<br>" + "\n";
         
         String result = instance.generateLongDivision(dividend, divisor);
-        System.out.println(expResult);
-        System.out.println(result);
         assertEquals(expResult, result);
 
     }

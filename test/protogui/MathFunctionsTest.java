@@ -70,6 +70,7 @@ public class MathFunctionsTest {
         int result = instance.getMultiplicationProblems();
         assertEquals(expResult,result);
     }
+    @Test
     //TODO DIVISION
         public void testSetDivisionProblems() {
         System.out.println("setDIvisionProblems");
