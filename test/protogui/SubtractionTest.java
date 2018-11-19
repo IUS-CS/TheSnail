@@ -14,9 +14,9 @@ import static org.junit.Assert.*;
  *
  * @author Thomas
  */
-public class WriteFileTest {
+public class SubtractionTest {
     
-    public WriteFileTest() {
+    public SubtractionTest() {
     }
     
     @BeforeClass
@@ -28,73 +28,14 @@ public class WriteFileTest {
     }
 
     /**
-     * Test of generateCarriedOnes method, of class WriteFile
+     * Test of generateCarriedNumbers method, of class Subtraction.
      */
-    //No Ones
-    @Test
-    public void testGenerateCarriedOnes1() {
-        System.out.println("generateCarriedOnes1");
-        int num1 = 0;
-        int num2 = 1;
-        WriteFile instance = new WriteFile();
-        String expResult = "&nbsp;&nbsp;";
-        String result = instance.generateCarriedOnes(num1, num2);
-        assertEquals(expResult, result);
-    }
-    
-    //One One
-    @Test
-    public void testGenerateCarriedOnes2() {
-        System.out.println("generateCarriedOnes2");
-        int num1 = 9;
-        int num2 = 1;
-        WriteFile instance = new WriteFile();
-        String expResult = "1&nbsp;&nbsp;";
-        String result = instance.generateCarriedOnes(num1, num2);
-        assertEquals(expResult, result);
-    }
-    
-    @Test
-    //2 Ones
-    public void testGenerateCarriedOnes3() {
-        System.out.println("generateCarriedOnes3");
-        int num1 = 39;
-        int num2 = 61;
-        WriteFile instance = new WriteFile();
-        String expResult = "11&nbsp;&nbsp;";
-        String result = instance.generateCarriedOnes(num1, num2);
-        assertEquals(expResult, result);
-    }
-    
-    @Test
-    //space between Ones
-    public void testGenerateCarriedOnes4() {
-        System.out.println("generateCarriedOnes4");
-        int num1 = 319;
-        int num2 = 761;
-        WriteFile instance = new WriteFile();
-        String expResult = "1&nbsp;&nbsp;1&nbsp;&nbsp;";
-        String result = instance.generateCarriedOnes(num1, num2);
-        assertEquals(expResult, result);
-    }
-    
-    //carrying over twice
-    @Test
-    public void testGenerateCarriedOnes5() {
-        System.out.println("generateCarriedOnes5");
-        int num1 = 999;
-        int num2 = 1;
-        WriteFile instance = new WriteFile();
-        String expResult = "111&nbsp;&nbsp;";
-        String result = instance.generateCarriedOnes(num1, num2);
-        assertEquals(expResult, result);
-    }
     @Test
     public void testGenerateCarriedNumbers1() {
         System.out.println("generateCarriedOnes1");
         int num1 = 10;
         int num2 = 4;
-        WriteFile instance = new WriteFile();
+        Subtraction instance = new Subtraction();
         String expResult = "0&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
@@ -106,7 +47,7 @@ public class WriteFileTest {
         System.out.println("generateCarriedOnes2");
         int num1 = 1000;
         int num2 = 1;
-        WriteFile instance = new WriteFile();
+        Subtraction instance = new Subtraction();;
         String expResult = "099&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
@@ -117,7 +58,7 @@ public class WriteFileTest {
         System.out.println("generateCarriedOnes3");
         int num1 = 564;
         int num2 = 70;
-        WriteFile instance = new WriteFile();
+        Subtraction instance = new Subtraction();
         String expResult = "4&nbsp;&nbsp;&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
@@ -128,7 +69,7 @@ public class WriteFileTest {
         System.out.println("generateCarriedOnes4");
         int num1 = 564;
         int num2 = 70;
-        WriteFile instance = new WriteFile();
+        Subtraction instance = new Subtraction();
         String expResult = "4&nbsp;&nbsp;&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
@@ -140,7 +81,7 @@ public class WriteFileTest {
         System.out.println("generateCarriedOnes5");
         int num1 = 100;
         int num2 = 1;
-        WriteFile instance = new WriteFile();
+        Subtraction instance = new Subtraction();
         String expResult = "09&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
@@ -156,15 +97,11 @@ public class WriteFileTest {
         System.out.println("generateCarriedOnes6");
         int num1 = 1000;
         int num2 = 10;
-        WriteFile instance = new WriteFile();
+        Subtraction instance = new Subtraction();
         String expResult = "09&nbsp;&nbsp;&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
     }
-
-    /**
-     * Test of generatePadding method, of class WriteFile.
-     */
     
     //burrowing 1 spaces but having to burrow after
     @Test
@@ -172,23 +109,9 @@ public class WriteFileTest {
         System.out.println("generateCarriedOnes7");
         int num1 = 1101;
         int num2 = 10;
-        WriteFile instance = new WriteFile();
+        Subtraction instance = new Subtraction();
         String expResult = "&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
     }
-
-    /**
-     * Test of generatePadding method, of class WriteFile.
-     */
-    
-    @Test
-    public void testGeneratePadding() {
-        System.out.println("generatePadding");
-        WriteFile instance = new WriteFile();
-        String expResult = "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;";
-        String result = instance.generatePadding();
-        assertEquals(expResult,result);
-    }
-    
 }
