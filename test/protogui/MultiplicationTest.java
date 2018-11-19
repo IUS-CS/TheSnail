@@ -75,8 +75,6 @@ public class MultiplicationTest {
         String expResult = "<u>+96</u>" + padding + "<br>" + "\n" + 
                 96 + padding + "<br>" + "\n";
         String result = instance.runningSums(operand1, operand2);
-        System.out.println(expResult);
-        System.out.println(result);
         assertEquals(expResult, result);
     }
     
@@ -92,8 +90,6 @@ public class MultiplicationTest {
                 "<u>+1200</u>" + padding + "<br>" + "\n" +
                 1296 + padding + "<br>" + "\n";
         String result = instance.runningSums(operand1, operand2);
-        System.out.println(expResult);
-        System.out.println(result);
         assertEquals(expResult, result);
     }
 
