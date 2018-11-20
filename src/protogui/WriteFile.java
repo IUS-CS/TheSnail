@@ -185,7 +185,10 @@ public class WriteFile {
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " * " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
-            solutions.write(multiplication.multiplicationSolutions(values[0], values[1], values[2]));
+            if(values[1] < 10)
+                solutions.write(multiplication.easyMultiplicationSolutions(values[0], values[1], values[2],values[3]));
+            else
+                solutions.write(multiplication.multiplicationSolutions(values[0], values[1], values[2]));
         }
 
 
@@ -204,7 +207,10 @@ public class WriteFile {
             //ARRAY SETUP value[0] = problem number, value[1] = operand1, value[2] = operand2 and value[3] = solution
             String problem = (values[0] + ") " + values[1] + " ^ " + values[2] + " = " + "<br>" + "\n");
             basicArithmeticGeneration(problem);
-            solutions.write(values[0] + ") " + values[1] + " ^ " + values[2] + " = " + values[3] + "<br>" + "\n");
+            if(values[1] < 10)
+                solutions.write(multiplication.easyMultiplicationSolutions(values[0],values[1],values[1],values[3]));
+            else
+            solutions.write(multiplication.multiplicationSolutions(values[0],values[1],values[1]));
         }
     }     
 }
