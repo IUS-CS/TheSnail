@@ -246,16 +246,16 @@ public class MathFunctions {
         //set up random numbers of varying lengths, depending on difficulty
         switch (difficulty) {
             case "easy":
-                num1 = rand.nextInt(9) + 2;
-                num2 = rand.nextInt(3) + 2;
+                num1 = rand.nextInt(9) + 1;
+                num2 = 2;
                 break;
             case "normal":
-                num1 = rand.nextInt(9) + 2;
-                num2 = rand.nextInt(5) + 2;
+                num1 = rand.nextInt(15) + 10;
+                num2 = 2;
                 break;
             default:
-                num1 = rand.nextInt(19) + 11;
-                num2 = rand.nextInt(5) + 2;
+                num1 = rand.nextInt(200) + 11;
+                num2 = 2;
                 break;
         }
         int ans = (int)Math.pow(num1, num2);

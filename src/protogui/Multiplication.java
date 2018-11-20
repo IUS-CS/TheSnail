@@ -92,4 +92,20 @@ public class Multiplication
         
         return multiplicationSolution;
     }
+    
+    String easyMultiplicationSolutions(int problemNum, int operand1, int operand2, int sum)
+    {
+        String multiplicationSolution = "";
+        String padding = paddingObj.generatePadding();
+        multiplicationSolution += "<div align=\"right\">" + "\n";
+        multiplicationSolution += problemNum + ") " + "&emsp;&emsp;" + padding +"<br>" + "\n" + "\n";
+        multiplicationSolution += "<font size = \"3\" color = grey>" + carriedMultiplication(operand1,operand2) + "<br>" + "\n";
+        multiplicationSolution += "<font size = \"3\" color = black>" + "\n";
+        multiplicationSolution += operand1 + padding + "<br>" + "\n";
+        multiplicationSolution += "<u>" + "x" + operand2  + "</u>" + padding + "<br>" + "\n";
+        multiplicationSolution +=  sum + padding + "<br>" + "\n";
+        multiplicationSolution += "</div>"+ "\n";
+        
+        return multiplicationSolution;
+    }
 }
