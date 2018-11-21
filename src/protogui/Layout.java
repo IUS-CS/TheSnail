@@ -28,7 +28,6 @@ public class Layout extends JFrame implements ActionListener {
     private JLabel addLabel, genLabel, subLabel, multLabel, divLabel, expLabel;
     JTextField addinput, output, subInput, multInput, divInput, expInput;
     JButton print;
-    //JFrame frame2;
     JPanel panel, panel2, panel3, panel4, panel5, panel6;
     JScrollPane scroll;
     MathFunctions mathFunctions = new MathFunctions();
@@ -46,6 +45,9 @@ public class Layout extends JFrame implements ActionListener {
     JRadioButton ea4,n4,h4;
     JRadioButton ea5,n5,h5;
     
+    JFileChooser chooser;
+    String choosertitle;
+    File dir;
 
     public Layout() {
         super("MathGenerator");
@@ -194,7 +196,17 @@ public class Layout extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == print) {
             try {
-                
+                //Allows user to decide where to save the files
+                chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new java.io.File("."));
+                chooser.setDialogTitle(choosertitle);
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setAcceptAllFileFilterUsed(false); // disable the "All files" option.
+
+               if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                    dir = chooser.getSelectedFile();
+                } 
+               
                 //Checking which radio buttons are pressed
                 if (ea1.isSelected()){
                     mathFunctions.setAddDiff("easy");  
@@ -246,7 +258,7 @@ public class Layout extends JFrame implements ActionListener {
                     mathFunctions.setExpDiff("hard");
                 }
                 
-                writeFile.file();
+                writeFile.file(dir);
                 mathFunctions.setAdditionProblems(Integer.parseInt(addinput.getText()));
                 mathFunctions.setSubtractionProblems(Integer.parseInt(subInput.getText()));
                 mathFunctions.setMultiplicationProblems(Integer.parseInt(multInput.getText()));

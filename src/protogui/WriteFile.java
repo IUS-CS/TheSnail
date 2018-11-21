@@ -6,6 +6,7 @@
 package protogui;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.*;
@@ -27,10 +28,10 @@ public class WriteFile {
     Division division = new Division();
 
     
-    public void file() throws IOException 
+    public void file(File dir) throws IOException 
     {
-        questions = new BufferedWriter(new FileWriter("questions.html"));
-        solutions = new BufferedWriter(new FileWriter("solutions.html"));
+        questions = new BufferedWriter(new FileWriter(new File(dir, "questions.html")));
+        solutions = new BufferedWriter(new FileWriter(new File(dir, "solutions.html")));
         startColumn(questions);
         startColumn(solutions);
     }
