@@ -31,11 +31,13 @@ public class Subtraction
             num2 = num2 / 10; //cuts off last digit
             int sub = dig1 - dig2;
             
-            if(sub < 0) //checks to see if user will need to carry a one
+            if(sub < 0) //checks to see if user will need to borrow a one
             {
+
+                
                 dig1 = num1 % 10;
-                num1 = num1 / 10;
-                num2 = num2 / 10;
+                
+
                 
                 //Take away one from the value you borrowed from
                 if(dig1 == 0)
@@ -46,10 +48,10 @@ public class Subtraction
                 
                 while(dig1 == 0)//looking for number to burrow a 1 from in case of 0
                 {
-                    
-                    dig1 = num1 % 10;
                     num1 = num1 / 10;
                     num2 = num2 / 10;
+                    dig1 = num1 % 10;
+                    
                     
                     //Take away one from the value you borrowed from
                     if(dig1 == 0)
@@ -62,6 +64,8 @@ public class Subtraction
                         carriedDigits = (dig1 - 1) + carriedDigits;
                     }
                 }
+                num1--;
+
             }
             else
             {

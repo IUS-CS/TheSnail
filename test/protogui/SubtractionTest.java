@@ -59,7 +59,7 @@ public class SubtractionTest {
         int num1 = 564;
         int num2 = 70;
         Subtraction instance = new Subtraction();
-        String expResult = "4&nbsp;&nbsp;&nbsp;&nbsp;";
+        String expResult = "&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
     }
@@ -70,7 +70,7 @@ public class SubtractionTest {
         int num1 = 564;
         int num2 = 70;
         Subtraction instance = new Subtraction();
-        String expResult = "4&nbsp;&nbsp;&nbsp;&nbsp;";
+        String expResult = "&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
     }
@@ -110,7 +110,19 @@ public class SubtractionTest {
         int num1 = 1101;
         int num2 = 10;
         Subtraction instance = new Subtraction();
-        String expResult = "&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;";
+        String expResult = "&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;";
+        String result = instance.generateCarriedNumbers(num1, num2);
+        assertEquals(expResult, result);
+    }
+    
+    //burrowing 1 spaces but having to burrow after
+    @Test
+    public void testGenerateCarriedNumbers8() {
+        System.out.println("generateCarriedOnes8");
+        int num1 = 714;
+        int num2 = 216;
+        Subtraction instance = new Subtraction();
+        String expResult = "&nbsp;&nbsp;60&nbsp;&nbsp;";
         String result = instance.generateCarriedNumbers(num1, num2);
         assertEquals(expResult, result);
     }
